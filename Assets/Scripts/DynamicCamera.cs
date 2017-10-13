@@ -24,7 +24,11 @@ public class DynamicCamera : MonoBehaviour {
 	public AnimationCurve dezoomCurve;
 
 	public float[] cases;
-	private float closestToEdge;
+	public float portHighestDiff;
+	public float portLowestDiff;
+	public float minPortPos;
+	public float maxPortPos;
+	public float distanceToPortLimit;
 
 	void Start ()
 	{
@@ -39,47 +43,64 @@ public class DynamicCamera : MonoBehaviour {
 
 	void CameraHeight()
 	{
-		viewPosP1 = cam.WorldToViewportPoint (player1.position);
+		viewPosP1 = cam.WorldToViewportPoint (player1.position);	//Translating players' world position in viewport (0 to 1 for x and y)
 		viewPosP2 = cam.WorldToViewportPoint (player2.position);
 
-		cases[0] = viewPosP1.x - 0.2f;
-		cases[1] = 0.8f - viewPosP1.x;
-		cases[2] = viewPosP1.y - 0.2f;
-		cases[3] = 0.8f - viewPosP1.y;
-		cases[4] = viewPosP2.x - 0.2f;
-		cases[5] = 0.8f - viewPosP2.x;
-		cases[6] = viewPosP2.y - 0.2f;
-		cases[7] = 0.8f - viewPosP2.y;
-		closestToEdge = 0;
+		cases[0] = Mathf.Round((viewPosP1.x - minPortPos) * 100) / 100;		//Calculating every case : the difference between players' viewport position and limits triggering the dezoom
+		cases[1] = Mathf.Round((viewPosP1.y - minPortPos) * 100) / 100;
+		cases[2] = Mathf.Round((maxPortPos - viewPosP1.x) * 100) / 100;
+		cases[3] = Mathf.Round((maxPortPos - viewPosP1.y) * 100) / 100;
+		cases[4] = Mathf.Round((viewPosP2.x - minPortPos) * 100) / 100;
+		cases[5] = Mathf.Round((viewPosP2.y - minPortPos) * 100) / 100;
+		cases[6] = Mathf.Round((maxPortPos - viewPosP2.x) * 100) / 100;
+		cases[7] = Mathf.Round((maxPortPos - viewPosP2.y) * 100) / 100;
+
+		portHighestDiff = 0;					//Initializing the biggest difference to zero
 
 		for (int i = 0; i < 8; i++)
 		{
-			if (cases[i] < closestToEdge) 
+			if (cases[i] < portHighestDiff) 	//Comparing every difference to the biggest negative difference (--> the player is beyond the limit)
 			{
-				closestToEdge = cases [i];
+				portHighestDiff = cases [i];		//If that's the case, this case becomes the new biggest negative difference
 			}
 		}
 
-		if (closestToEdge < 0) 
+		if (portHighestDiff < 0) 		//After checking every case, we check if one of the players was indeed beyond a limit
 		{
-			Dezoom (Mathf.Abs (closestToEdge));
+		//	Dezoom (Mathf.Abs (portHighestDiff));	//We trigger a dezoom this frame, sending in the difference (for the lerp curve)
 		} 
 
-		else if (cam.transform.localPosition.y > minCameraHeight)
+		else if (cam.transform.localPosition.y > minCameraHeight) //If the players are inside the limits, and the camera is dezoomed from default position
 		{
+			portLowestDiff = 0.5f - minPortPos;
 			for (int i = 0; i < 8; i++)
 			{
-				if (cases[i] > 0.2f && cases[i] > closestToEdge) 
+				if (cases[i] > distanceToPortLimit && cases[i] < portLowestDiff) //
 				{
-					closestToEdge = cases [i];
+					portLowestDiff = cases [i];
 				}
 			}
 
-			if (closestToEdge > 0.2f) 
+			if (portLowestDiff > distanceToPortLimit) 
 			{
-				Zoom ();
+			//	Zoom ();
 			}
 		}
+
+		//print (portHighestDiff);
+	}
+		
+	void Dezoom (float distanceToEdge)
+	{
+		dezoomLerp = dezoomCurve.Evaluate (distanceToEdge);	//We give the difference as the X parameter of the curve determining the lerp (bigger lerp if the player is closer to the viewport border)
+		cam.transform.localPosition = Vector3.Lerp (cam.transform.localPosition, new Vector3 (cam.transform.localPosition.x, cam.transform.localPosition.y + cameraDezoom, cam.transform.localPosition.z - cameraDezoom), dezoomLerp);
+		print ("dezoom");
+	}
+
+	void Zoom ()
+	{
+		cam.transform.localPosition = Vector3.Lerp (cam.transform.localPosition, new Vector3 (cam.transform.localPosition.x, cam.transform.localPosition.y - cameraZoom, cam.transform.localPosition.z + cameraZoom), zoomLerp);
+		print ("zoom");
 	}
 
 	void SmoothFollow ()
@@ -87,16 +108,5 @@ public class DynamicCamera : MonoBehaviour {
 		screenCenter = cam.ViewportToWorldPoint (new Vector3 (0.5f, 0.5f, cam.nearClipPlane));
 		targetPos = new Vector3 ((player1.position.x + player2.position.x + screenCenter.x)/3, transform.position.y, (player1.position.z + player2.position.z + screenCenter.y)/3);
 		transform.position = Vector3.SmoothDamp (transform.position, targetPos, ref velocity, smoothTime); 
-	}
-
-	void Dezoom (float distanceToEdge)
-	{
-		dezoomLerp = dezoomCurve.Evaluate (distanceToEdge * 5);
-		cam.transform.localPosition = Vector3.Lerp (cam.transform.localPosition, new Vector3 (cam.transform.localPosition.x, cam.transform.localPosition.y + cameraDezoom, cam.transform.localPosition.z - cameraDezoom), dezoomLerp);
-	}
-
-	void Zoom ()
-	{
-		cam.transform.localPosition = Vector3.Lerp (cam.transform.localPosition, new Vector3 (cam.transform.localPosition.x, cam.transform.localPosition.y - cameraZoom, cam.transform.localPosition.z + cameraZoom), zoomLerp);
 	}
 }

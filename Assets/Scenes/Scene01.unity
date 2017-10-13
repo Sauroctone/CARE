@@ -271,7 +271,7 @@ Transform:
   m_GameObject: {fileID: 268688128}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1, z: 1.5}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -323,7 +323,7 @@ MonoBehaviour:
   player2: {fileID: 268688132}
   smoothTime: 0.2
   maxCameraHeight: 0
-  cameraDezoom: 0.3
+  cameraDezoom: 0.1
   cameraZoom: 0.3
   dezoomLerp: 0.1
   zoomLerp: 0.1
@@ -337,10 +337,10 @@ MonoBehaviour:
       outSlope: 0
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.20123291
-      value: 0.9830322
-      inSlope: 15.099696
-      outSlope: 15.099696
+      time: 0.1507997
+      value: 0.7495978
+      inSlope: 14.237039
+      outSlope: 14.237039
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -354,6 +354,9 @@ MonoBehaviour:
   - 0
   - 0
   - 0
+  minPortPos: 0.15
+  maxPortPos: 0.85
+  distanceToPortLimit: 0.25
 --- !u!4 &386767261
 Transform:
   m_ObjectHideFlags: 0
