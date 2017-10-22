@@ -19,6 +19,7 @@ public class DynamicCamera : MonoBehaviour {
 	public float maxCameraHeight;
 	public float cameraDezoom;
 	public float cameraZoom;
+	public float zDivider;
 	public float dezoomLerp;
 	public float zoomLerp;
 	public AnimationCurve dezoomCurve;
@@ -31,12 +32,10 @@ public class DynamicCamera : MonoBehaviour {
 
 	public Texture debugTexture;
 	Vector3 minScreenPos;
-	Vector3 maxScreenPos;
 
 	void Start ()
 	{
 		minCameraHeight = cam.transform.position.y;
-
 	}
 
 	void Update ()
@@ -69,7 +68,6 @@ public class DynamicCamera : MonoBehaviour {
 			Dezoom (Mathf.Abs (portHighestDiff));	//We trigger a dezoom this frame, sending in the difference (for the lerp curve)
 		}
 
-
 		else if (cam.transform.localPosition.y > minCameraHeight) //If the players are inside the limits, and the camera is dezoomed from default position
 		{
 			if (viewPosP2.x > distanceToCenter && viewPosP2.x < 0.5 + distanceToCenter && viewPosP2.y > distanceToCenter && viewPosP2.y < 0.5 + distanceToCenter) 
@@ -82,14 +80,15 @@ public class DynamicCamera : MonoBehaviour {
 	void Dezoom (float distanceToEdge)
 	{
 		dezoomLerp = dezoomCurve.Evaluate (distanceToEdge);	//We give the difference as the X parameter of the curve determining the lerp (bigger lerp if the player is closer to the viewport border)
-		cam.transform.localPosition = Vector3.Lerp (cam.transform.localPosition, new Vector3 (cam.transform.localPosition.x, cam.transform.localPosition.y + cameraDezoom, cam.transform.localPosition.z - cameraDezoom), dezoomLerp);
-		//cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, cam.fieldOfView + cameraDezoom, dezoomLerp);
+		cam.transform.localPosition = Vector3.Lerp (cam.transform.localPosition, new Vector3 (cam.transform.localPosition.x, cam.transform.localPosition.y + cameraDezoom, cam.transform.localPosition.z - cameraDezoom / zDivider), dezoomLerp);
+		//cam.transform.localPosition = Vector3.SmoothDamp (cam.transform.localPosition, new Vector3 (cam.transform.localPosition.x, cam.transform.localPosition.y + cameraDezoom, cam.transform.localPosition.z - cameraDezoom / zDivider), ref velocity, dezoomLerp);
 		//print ("dezoom");
 	}
 
 	void Zoom ()
 	{
-		cam.transform.localPosition = Vector3.Lerp (cam.transform.localPosition, new Vector3 (cam.transform.localPosition.x, cam.transform.localPosition.y - cameraZoom, cam.transform.localPosition.z + cameraZoom), zoomLerp);
+		cam.transform.localPosition = Vector3.Lerp (cam.transform.localPosition, new Vector3 (cam.transform.localPosition.x, cam.transform.localPosition.y - cameraZoom, cam.transform.localPosition.z + cameraZoom / zDivider), zoomLerp);
+		//cam.transform.localPosition = Vector3.SmoothDamp (cam.transform.localPosition, new Vector3 (cam.transform.localPosition.x, cam.transform.localPosition.y - cameraZoom, cam.transform.localPosition.z + cameraZoom / zDivider), ref velocity, zoomLerp);
 		//print ("zoom");
 	}
 
@@ -101,6 +100,7 @@ public class DynamicCamera : MonoBehaviour {
 		transform.position = Vector3.SmoothDamp (transform.position, targetPos, ref velocity, smoothTime); 
 	}
 
+	//Debug camera zones
 	void OnGUI()
 	{
 		minScreenPos = cam.ViewportToScreenPoint (new Vector3 (minPortPos, minPortPos, 0));
@@ -108,5 +108,5 @@ public class DynamicCamera : MonoBehaviour {
 
 		GUI.DrawTexture (new Rect (minScreenPos.x, minScreenPos.y, Screen.width - minScreenPos.x * 2, Screen.height - minScreenPos.y * 2), debugTexture);
 		GUI.DrawTexture (new Rect (zoomRectOrigin.x, zoomRectOrigin.y, Screen.width - zoomRectOrigin.x * 2, Screen.height - zoomRectOrigin.y * 2), debugTexture);
-	}
+	}		
 }

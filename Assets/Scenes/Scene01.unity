@@ -230,7 +230,8 @@ MonoBehaviour:
   smoothTime: 0.2
   maxCameraHeight: 0
   cameraDezoom: 0.1
-  cameraZoom: 0.3
+  cameraZoom: 0.1
+  zDivider: 3.3
   dezoomLerp: 0.1
   zoomLerp: 0.1
   dezoomCurve:
@@ -243,10 +244,10 @@ MonoBehaviour:
       outSlope: 0.29152358
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.1
-      value: 0.7524595
-      inSlope: 21.156042
-      outSlope: 21.156042
+      time: 0.15
+      value: 0.75
+      inSlope: 15.005132
+      outSlope: 15.005132
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -257,8 +258,8 @@ MonoBehaviour:
   - 0
   - 0
   portHighestDiff: 0
-  minPortPos: 0.1
-  maxPortPos: 0.9
+  minPortPos: 0.15
+  maxPortPos: 0.85
   distanceToCenter: 0.25
   debugTexture: {fileID: 2800000, guid: e8cc660bc4905cf4087c7b175a341b14, type: 3}
 --- !u!4 &386767261
@@ -446,13 +447,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 822302342}
-  m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
-  m_LocalPosition: {x: 0, y: 12.5, z: -7.5}
+  m_LocalRotation: {x: 0.60876137, y: 0, z: 0, w: 0.7933534}
+  m_LocalPosition: {x: 0, y: 12.5, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 386767261}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 75, y: 0, z: 0}
 --- !u!1 &985638036
 GameObject:
   m_ObjectHideFlags: 0
