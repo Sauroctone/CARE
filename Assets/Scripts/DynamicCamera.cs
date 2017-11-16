@@ -101,12 +101,12 @@ public class DynamicCamera : MonoBehaviour {
 	}
 
 	//Debug camera zones
-	void OnGUI()
+/*	void OnGUI()
 	{
 		minScreenPos = cam.ViewportToScreenPoint (new Vector3 (minPortPos, minPortPos, 0));
 		Vector3 zoomRectOrigin = cam.ViewportToScreenPoint (new Vector3 (distanceToCenter, distanceToCenter, 0));
 
 		GUI.DrawTexture (new Rect (minScreenPos.x, minScreenPos.y, Screen.width - minScreenPos.x * 2, Screen.height - minScreenPos.y * 2), debugTexture);
 		GUI.DrawTexture (new Rect (zoomRectOrigin.x, zoomRectOrigin.y, Screen.width - zoomRectOrigin.x * 2, Screen.height - zoomRectOrigin.y * 2), debugTexture);
-	}		
+	}		*/
 }
