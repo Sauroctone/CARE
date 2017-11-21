@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour {
 	private float hinput;
 	private float vinput;
 
-	Vector3 movement;
+	public Vector3 movement;
 
 	private x360_Gamepad gamepad;
 	private GamepadManager manager;
