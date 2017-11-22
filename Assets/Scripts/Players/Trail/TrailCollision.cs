@@ -8,15 +8,13 @@ public class TrailCollision : MonoBehaviour {
 
 	public List<Vector3> trailPositions = new List<Vector3>();
 	public float sampleRate;
-	LayerMask layer;
+	public LayerMask layer;
 
 	void Start ()
 	{
 		trail = GetComponent<TrailRenderer> ();
 		StartCoroutine (GetVertexPosition ());
 		StartCoroutine (TimeDelay ());
-
-		layer = LayerMask.GetMask ("Player2");
 	}
 
 	IEnumerator TimeDelay()
@@ -41,11 +39,13 @@ public class TrailCollision : MonoBehaviour {
 
 	void Update ()
 	{
-		for (int i = 0; i < trailPositions.Count-1; i++) 
+		for (int i = 0; i < trailPositions.Count-2; i++) 
 		{
 			if (Physics.Linecast (trailPositions [i], trailPositions [i + 1], layer))
-				print ("touché");
-			
+			{
+				//print ("touché");
+			}
+
 			//Debug
 			Debug.DrawLine (trailPositions [i], trailPositions [i + 1], Random.ColorHSV());
 		}

@@ -4,16 +4,10 @@ using UnityEngine;
 
 public class TrailSpawner : MonoBehaviour {
 
-	Rigidbody rb;
 	public GameObject trail;
 	GameObject trailInstance;
 
-	public PlayerController player;
-
-	void Start ()
-	{ 
-		rb = GetComponent<Rigidbody> ();
-	}
+	public GamepadController player;
 
 	void Update ()
 	{

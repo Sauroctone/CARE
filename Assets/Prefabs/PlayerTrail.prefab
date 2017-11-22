@@ -74,7 +74,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 1
+  m_Time: 1.5
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 1
@@ -145,3 +145,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trailPositions: []
   sampleRate: 0.1
+  layer:
+    serializedVersion: 2
+    m_Bits: 1024

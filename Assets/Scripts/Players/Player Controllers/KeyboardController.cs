@@ -2,34 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+public class KeyboardController : MonoBehaviour {
 
 	public float speed;
 	private Rigidbody rb;
 	private float hinput;
 	private float vinput;
 
-	public Vector3 movement;
+	Vector3 movement;
 
-	private x360_Gamepad gamepad;
-	private GamepadManager manager;
-	public int player;
-
-	void Start ()
+	void Start () 
 	{
 		rb = GetComponent<Rigidbody> ();
-		manager = GamepadManager.Instance;
-		gamepad = manager.GetGamepad (player);
 	}
 
-	void Update()
+	void Update () 
 	{
-		hinput = gamepad.GetStick_L ().X;
-		vinput = gamepad.GetStick_L ().Y;
+		hinput = Input.GetAxisRaw ("Horizontal");
+		vinput = Input.GetAxisRaw ("Vertical");
 		movement = new Vector3 (hinput, 0, vinput).normalized * speed;
-
-		//print (hinput);
-		//print (vinput);
 	}
 
 	void FixedUpdate ()

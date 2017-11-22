@@ -12,7 +12,7 @@ public class MouseController: MonoBehaviour {
 	public Transform player2;
 	public Transform player1;
 
-	RaycastHit hit;
+//	RaycastHit hit;
 	Ray ray;
 	int layerMask;
 
@@ -87,7 +87,7 @@ public class MouseController: MonoBehaviour {
 			{
 				ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 
-				if (Physics.Raycast (ray, out hit, Mathf.Infinity, layerMask)) 
+				if (Physics.Raycast (ray, Mathf.Infinity, layerMask)) 
 				{
 					if (arrowInst.activeSelf)
 						arrowInst.SetActive (false);
