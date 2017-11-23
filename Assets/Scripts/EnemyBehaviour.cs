@@ -10,6 +10,7 @@ public class EnemyBehaviour : MonoBehaviour {
 	Rigidbody rb;
 	public GameObject dust;
 
+
 	void Start ()
 	{
 		lists.enemyDatabase.Add (gameObject);

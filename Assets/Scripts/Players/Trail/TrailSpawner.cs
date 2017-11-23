@@ -5,7 +5,7 @@ using UnityEngine;
 public class TrailSpawner : MonoBehaviour {
 
 	public GameObject trail;
-	GameObject trailInstance;
+	public GameObject trailInstance;
 
 	public GamepadController player;
 

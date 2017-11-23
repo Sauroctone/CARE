@@ -5,6 +5,7 @@ using UnityEngine;
 public class GamepadController : MonoBehaviour {
 
 	public float speed;
+	public float originalSpeed;
 	Rigidbody rb;
 	float hinput;
 	float vinput;
@@ -17,12 +18,15 @@ public class GamepadController : MonoBehaviour {
 	GamepadManager manager;
 	public int player;
 
-	private DashController dash;
+	DashController dash;
+	LockZoneController lockZone;
 
 	void Start ()
 	{
 		rb = GetComponent<Rigidbody> ();
 		dash = GetComponent<DashController> ();
+		lockZone = GetComponent<LockZoneController>	();
+		speed = originalSpeed;
 
 		manager = GamepadManager.Instance;
 		gamepad = manager.GetGamepad (player);
@@ -40,12 +44,15 @@ public class GamepadController : MonoBehaviour {
 
 		transform.rotation = Quaternion.LookRotation (lastDirection);
 
-		movement = direction * speed;
+		if (dash.isDashing)
+			movement = lastDirection * speed;
+		else
+			movement = direction * speed;
 	}
 
 	void FixedUpdate ()
 	{
-		if (!dash.isDashing)
+		if (!lockZone.isExecuting)
 			rb.velocity = new Vector3 (movement.x, rb.velocity.y, movement.z); 
 	}
 }

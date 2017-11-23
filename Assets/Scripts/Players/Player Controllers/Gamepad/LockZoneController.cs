@@ -6,22 +6,39 @@ public class LockZoneController : MonoBehaviour {
 
 	GamepadController player;
 	DashController dash;
+	Rigidbody rb;
 
 	public GameObject lockZone;
-	public ListManager lists;
 
 	float scale;
 	float originalScale;
 	public float scaleIncrement;
 	public float lockZoneWidth;
+	public float speedDecrement;
 
-	Mesh lockZoneMesh;
+	public float execSpeed;
+	public bool isExecuting;
+
+	TrailSpawner trailSpawn;
+	LockZoneCollision lockList;
+
+	VibrationManager vibration;
+	public float leftPower;
+	public float rightPower;
+	public float timer;
+
+//	Mesh lockZoneMesh;
 
 	void Start()
 	{
 		player = GetComponent <GamepadController> ();
 		dash = GetComponent <DashController> ();
-		lockZoneMesh = lockZone.GetComponent<MeshFilter>().mesh;
+		rb = GetComponent<Rigidbody> ();
+		lockList = lockZone.GetComponent<LockZoneCollision> ();
+		trailSpawn = GetComponent<TrailSpawner> ();
+		vibration = GetComponent<VibrationManager> ();
+
+		//lockZoneMesh = lockZone.GetComponent<MeshFilter>().mesh;
 
 		originalScale = lockZone.transform.localScale.x;
 		scale = originalScale;
@@ -32,12 +49,21 @@ public class LockZoneController : MonoBehaviour {
 		if (!dash.isDashing && player.gamepad.GetButtonDown("B")) 
 		{
 			lockZone.SetActive (true);
+			leftPower = 0.2f;
+			rightPower = 0.2f;
 		}
 
 		if (lockZone.activeSelf && player.gamepad.GetButton ("B"))
 		{
 			scale += scaleIncrement * Time.deltaTime;
 			lockZone.transform.localScale = new Vector3 (scale, 1, scale);
+
+			if (player.speed > 0)
+				player.speed -= speedDecrement * Time.deltaTime;
+
+			leftPower += 0.1f * Time.deltaTime;
+			rightPower = leftPower;
+			vibration.Vibrate (leftPower, rightPower);
 		}
 
 		if (lockZone.activeSelf && !player.gamepad.GetButton ("B")) 
@@ -45,28 +71,41 @@ public class LockZoneController : MonoBehaviour {
 			lockZone.transform.localScale = new Vector3 (1, 1, 1);
 			scale = originalScale;
 
-			//lockZoneWidth = lockZoneMesh.bounds.size.x * lockZone.transform.localScale.x;
-
 			lockZone.SetActive (false);
-			/*
-			for (int i = 0; i < lists.enemyDatabase.Count; i++) 
-			{
-				if (Vector3.Distance (lists.enemyDatabase [i].transform.position, transform.position) <= lockZoneWidth)
-					print ("in radius");
-			}*/
 
-			StartCoroutine (LockZoneExecution ());
+			if (lockList.lockedEnemies.Count > 0)
+				StartCoroutine (LockZoneExecution ());
+			else
+				player.speed = player.originalSpeed;
+		}
+
+		if (dash.isDashing && isExecuting) 
+		{
+			StopCoroutine (LockZoneExecution ());
+			lockList.lockedEnemies.Clear ();
+			isExecuting = false;
 		}
 	}
 
 	IEnumerator LockZoneExecution()
 	{
-		LockZoneCollision lockList = lockZone.GetComponent<LockZoneCollision> ();
-		yield return null; //en attendant
+		isExecuting = true;
 
-		//Foncer dans chaque ennemi de la liste un par un et l'éliminer
-		//Clean la liste d'ennemis lockés au fur et à mesure de l'élimination, OU clean entièrement en cas d'interruption
-		//Pouvoir interrompre cette coroutine en dashant
+		if (trailSpawn.trailInstance == null) 
+			trailSpawn.trailInstance = Instantiate (trailSpawn.trail, transform) as GameObject;
+
+		while (lockList.lockedEnemies.Count > 0) 
+		{
+			Transform target = lockList.lockedEnemies [0];
+			rb.MovePosition (target.position);
+			Destroy (target.gameObject);
+			lockList.lockedEnemies.RemoveAt (0);
+			yield return new WaitForSeconds (0.1f);
+		}
+
+		player.speed = player.originalSpeed;
+		isExecuting = false;
+
 		//Interrompre cette coroutine en cas de collision avec un élément d'enviro (ex : rocher)
 	}
 }

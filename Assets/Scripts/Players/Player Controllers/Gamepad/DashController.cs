@@ -6,7 +6,7 @@ public class DashController : MonoBehaviour {
 
 	GamepadController player;
 
-	private Rigidbody rb;
+	//private Rigidbody rb;
 
 	public bool isDashing;
 	bool canDash = true;
@@ -19,7 +19,7 @@ public class DashController : MonoBehaviour {
 
 	void Start () 
 	{
-		rb = GetComponent<Rigidbody> ();
+	//	rb = GetComponent<Rigidbody> ();
 		player = GetComponent<GamepadController> ();
 	}
 
@@ -35,19 +35,23 @@ public class DashController : MonoBehaviour {
 	{
 		canDash = false;
 		isDashing = true;
-		rb.AddForce(player.lastDirection * dashStrength, ForceMode.Impulse);
+		//rb.AddForce(player.lastDirection * dashStrength, ForceMode.Impulse);
+		player.speed = dashStrength;
 		Physics.IgnoreLayerCollision (LayerMask.NameToLayer ("Enemy"), LayerMask.NameToLayer ("PlayerTwo"));
 
 		yield return new WaitForSeconds(dashTime);
+	
+		player.speed = 0;
 
-		rb.velocity = Vector3.zero;
 		yield return new WaitForSeconds (dashFreeze);
+
 		isDashing = false;
-		//REVERSE IGNORE LAYER COLLISION
+		player.speed = player.originalSpeed;
+		Physics.IgnoreLayerCollision (LayerMask.NameToLayer ("Enemy"), LayerMask.NameToLayer ("PlayerTwo"), false);
 		//S'IL FINIT SON DASH DANS UN ENNEMI ?
 
-
 		yield return new WaitForSeconds (dashCooldown);
+
 		canDash = true;
 	}
 }
