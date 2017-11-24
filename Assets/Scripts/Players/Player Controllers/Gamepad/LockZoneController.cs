@@ -63,7 +63,7 @@ public class LockZoneController : MonoBehaviour {
 
 			leftPower += 0.1f * Time.deltaTime;
 			rightPower = leftPower;
-			vibration.Vibrate (leftPower, rightPower);
+			//vibration.Vibrate (leftPower, rightPower);
 		}
 
 		if (lockZone.activeSelf && !player.gamepad.GetButton ("B")) 

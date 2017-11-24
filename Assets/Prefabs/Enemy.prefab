@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 136681723105894928}
   - component: {fileID: 23219181514281048}
   - component: {fileID: 54626857951149708}
+  - component: {fileID: 114378737447081600}
   m_Layer: 12
   m_Name: Enemy
   m_TagString: Untagged
@@ -37,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1303301902670912}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.18, y: 0, z: 0}
+  m_LocalPosition: {x: 5.62, y: 0, z: 1.68}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -95,8 +96,23 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &114378737447081600
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1303301902670912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8780cb8178120ac4e9b979c8a0544430, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lists: {fileID: 0}
+  mouse: {fileID: 0}
+  isPulled: 0
+  dust: {fileID: 1850661249875624, guid: 2754bfb741c2e5b4c9369f093d54b220, type: 2}
 --- !u!136 &136681723105894928
 CapsuleCollider:
   m_ObjectHideFlags: 1
