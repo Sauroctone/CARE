@@ -42,7 +42,7 @@ public class GamepadController : MonoBehaviour {
 
 		direction = new Vector3 (hinput, 0, vinput).normalized;
 
-		if (direction != Vector3.zero)
+		if (direction != Vector3.zero && !dash.isDashing)
 			lastDirection = direction;
 
 		transform.rotation = Quaternion.LookRotation (lastDirection);
@@ -58,7 +58,7 @@ public class GamepadController : MonoBehaviour {
 		if (!lockZone.isExecuting)
 			rb.velocity = new Vector3 (movement.x, rb.velocity.y, movement.z); 
 
-		Debug.DrawRay (transform.position, rb.velocity.normalized * checkDist, Color.blue, .1f);
+		//Debug.DrawRay (transform.position, rb.velocity.normalized * checkDist, Color.blue, .1f);
 
 		if (Physics.Raycast(transform.position, rb.velocity.normalized, checkDist, layer))
 		{

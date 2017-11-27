@@ -9,12 +9,14 @@ public class LockZoneController : MonoBehaviour {
 	Rigidbody rb;
 
 	public GameObject lockZone;
+	public Transform projector;
 
 	float scale;
 	float originalScale;
 	public float scaleIncrement;
-	public float lockZoneWidth;
 	public float speedDecrement;
+	public float heightIncrement;
+	float originalHeight;
 
 	public float execSpeed;
 	public bool isExecuting;
@@ -42,6 +44,7 @@ public class LockZoneController : MonoBehaviour {
 
 		originalScale = lockZone.transform.localScale.x;
 		scale = originalScale;
+		originalHeight = projector.position.y;
 	}
 
 	void Update ()
@@ -58,6 +61,8 @@ public class LockZoneController : MonoBehaviour {
 			scale += scaleIncrement * Time.deltaTime;
 			lockZone.transform.localScale = new Vector3 (scale, 1, scale);
 
+			projector.position = new Vector3 (projector.position.x, projector.position.y + heightIncrement * Time.deltaTime, projector.position.z);
+
 			if (player.speed > 0)
 				player.speed -= speedDecrement * Time.deltaTime;
 
@@ -70,6 +75,7 @@ public class LockZoneController : MonoBehaviour {
 		{
 			lockZone.transform.localScale = new Vector3 (1, 1, 1);
 			scale = originalScale;
+			projector.position = new Vector3 (projector.position.x, originalHeight, projector.position.z);
 
 			lockZone.SetActive (false);
 

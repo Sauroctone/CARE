@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23918969778093114}
   - component: {fileID: 54086135765073846}
   - component: {fileID: 114850821570192962}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Player1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1554821298513390}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0.11, y: 0.5, z: 0.12}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -53,6 +53,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -68,6 +69,7 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -96,7 +98,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &114850821570192962
 MonoBehaviour:
@@ -109,8 +111,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ab72a02df4ba694ab802e31fec41c62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7
-  movement: {x: 0, y: 0, z: 0}
+  speed: 4
+  layer:
+    serializedVersion: 2
+    m_Bits: 1024
+  checkDist: 1
 --- !u!136 &136047574286455362
 CapsuleCollider:
   m_ObjectHideFlags: 1

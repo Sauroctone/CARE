@@ -8,11 +8,12 @@ public class EnemyBehaviour : MonoBehaviour {
 	public bool isPulled;
 	Rigidbody rb;
 	public GameObject dust;
-
+	HealthManager health;
 
 	void Start ()
 	{
 		rb = GetComponent<Rigidbody> ();
+		health = GetComponent<HealthManager> ();
 	}
 
 	public IEnumerator GetPulled ()
@@ -31,5 +32,11 @@ public class EnemyBehaviour : MonoBehaviour {
 
 		rb.useGravity = true;
 		isPulled = false;
+	}
+
+	void OnTriggerEnter (Collider col)
+	{
+		if (col.tag == "Player")
+			health.hitPoints -= 1;
 	}
 }

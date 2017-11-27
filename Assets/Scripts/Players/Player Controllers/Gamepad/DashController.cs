@@ -15,8 +15,6 @@ public class DashController : MonoBehaviour {
 	public float dashFreeze;
 	public float dashCooldown;
 
-	public enum PlayerTwoStates {Normal, Dashing};
-
 	void Start () 
 	{
 	//	rb = GetComponent<Rigidbody> ();
@@ -38,6 +36,7 @@ public class DashController : MonoBehaviour {
 		//rb.AddForce(player.lastDirection * dashStrength, ForceMode.Impulse);
 		player.speed = dashStrength;
 		Physics.IgnoreLayerCollision (LayerMask.NameToLayer ("Enemy"), LayerMask.NameToLayer ("PlayerTwo"));
+		Physics.IgnoreLayerCollision (LayerMask.NameToLayer ("DashEnemy"), LayerMask.NameToLayer ("PlayerTwo"), false);
 
 		yield return new WaitForSeconds(dashTime);
 	
@@ -48,6 +47,7 @@ public class DashController : MonoBehaviour {
 		isDashing = false;
 		player.speed = player.originalSpeed;
 		Physics.IgnoreLayerCollision (LayerMask.NameToLayer ("Enemy"), LayerMask.NameToLayer ("PlayerTwo"), false);
+		Physics.IgnoreLayerCollision (LayerMask.NameToLayer ("DashEnemy"), LayerMask.NameToLayer ("PlayerTwo"));
 		//S'IL FINIT SON DASH DANS UN ENNEMI ?
 
 		yield return new WaitForSeconds (dashCooldown);

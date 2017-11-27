@@ -29,7 +29,7 @@ public class KeyboardController : MonoBehaviour {
 	{
 		rb.velocity = new Vector3 (movement.x, rb.velocity.y, movement.z); 
 
-		Debug.DrawRay (transform.position, rb.velocity.normalized * checkDist, Color.red, .1f);
+		//Debug.DrawRay (transform.position, rb.velocity.normalized * checkDist, Color.red, .1f);
 
 		if (Physics.Raycast(transform.position, rb.velocity.normalized, checkDist, layer))
 		{
