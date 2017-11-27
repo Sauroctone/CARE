@@ -61,6 +61,7 @@ GameObject:
   - component: {fileID: 114247635790403564}
   - component: {fileID: 114300864519510542}
   - component: {fileID: 114821127824628638}
+  - component: {fileID: 114691264574183740}
   m_Layer: 10
   m_Name: Player2
   m_TagString: Untagged
@@ -133,7 +134,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1461575410283130}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.13, y: 0, z: -2.66}
+  m_LocalPosition: {x: -1.83, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4582100740599066}
@@ -316,6 +317,17 @@ MonoBehaviour:
   trail: {fileID: 1483047586148370, guid: 26abb0a16914cf74bb2f14ca4647d7e8, type: 2}
   trailInstance: {fileID: 0}
   player: {fileID: 114807105344170278}
+--- !u!114 &114691264574183740
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1461575410283130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ebb8908239f4c244b4136a6fe0dd7be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114807105344170278
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -332,6 +344,10 @@ MonoBehaviour:
   movement: {x: 0, y: 0, z: 0}
   lastDirection: {x: 1, y: 0, z: 0}
   player: 1
+  layer:
+    serializedVersion: 2
+    m_Bits: 8192
+  checkDist: 0.75
 --- !u!114 &114821127824628638
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -349,6 +365,9 @@ MonoBehaviour:
   speedDecrement: 3
   execSpeed: 80
   isExecuting: 0
+  leftPower: 0
+  rightPower: 0
+  timer: 0
 --- !u!114 &114941359140165166
 MonoBehaviour:
   m_ObjectHideFlags: 1

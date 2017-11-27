@@ -13,7 +13,6 @@ public class MouseController: MonoBehaviour {
 	public Transform player2;
 	public Transform player1;
 
-//	RaycastHit hit;
 	Ray ray;
 	int layerMask;
 
@@ -30,8 +29,6 @@ public class MouseController: MonoBehaviour {
 	public float pullHeight;
 
 	public ParticleSystem healParticles;
-
-	public ListManager lists;
 
 	void Start ()
 	{
@@ -108,10 +105,14 @@ public class MouseController: MonoBehaviour {
 		{
 			if (ccZoneInst != null) 
 			{
-				for (int i = 0; i < lists.enemyDatabase.Count; i++) 
+				CrowdControlCollision ccList = ccZoneInst.GetComponent<CrowdControlCollision> ();
+
+				if (ccList.ccEnemies.Count > 0) 
 				{
-					if (Vector3.Distance(lists.enemyDatabase[i].transform.position, ccZoneInst.transform.position) <= ccZoneWidth)
-						CrowdControl (lists.enemyDatabase[i]);
+					foreach (Transform enemy in ccList.ccEnemies) 
+					{
+						CrowdControl (enemy);
+					}
 				}
 
 				Destroy (ccZoneInst);
@@ -136,17 +137,16 @@ public class MouseController: MonoBehaviour {
 		}
 	}
 
-	void CrowdControl (GameObject enemy)
+	void CrowdControl (Transform enemy)
 	{
 		if (arrowInst.activeSelf) 
 		{
-			pullDir = new Vector3 (transform.position.x - enemy.transform.position.x, pullHeight, transform.position.z - enemy.transform.position.z).normalized;
-			StartCoroutine (enemy.GetComponent<EnemyBehaviour>().GetPulled());
+			pullDir = new Vector3 (transform.position.x - enemy.position.x, pullHeight, transform.position.z - enemy.position.z).normalized;
+			StartCoroutine (enemy.gameObject.GetComponent<EnemyBehaviour>().GetPulled());
 		}
 
 		else
 			print ("stunned");
-
 	}
 
 	void Heal ()
@@ -157,7 +157,6 @@ public class MouseController: MonoBehaviour {
 
 	IEnumerator Shield ()
 	{
-		//print ("shield");
 		shield.SetActive (true);
 		yield return new WaitForSeconds (shieldTimer);
 		shield.SetActive (false);
@@ -165,10 +164,8 @@ public class MouseController: MonoBehaviour {
 
 	IEnumerator ShieldInputBuffer ()
 	{
-		//print ("is buffering");
 		isBuffering = true;
 		yield return new WaitForSeconds (bufferTimer);
 		isBuffering = false;
-		//print ("is not buffering");
 	}
 }

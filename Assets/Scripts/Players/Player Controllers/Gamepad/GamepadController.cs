@@ -21,6 +21,9 @@ public class GamepadController : MonoBehaviour {
 	DashController dash;
 	LockZoneController lockZone;
 
+	public LayerMask layer;
+	public float checkDist;
+
 	void Start ()
 	{
 		rb = GetComponent<Rigidbody> ();
@@ -54,5 +57,12 @@ public class GamepadController : MonoBehaviour {
 	{
 		if (!lockZone.isExecuting)
 			rb.velocity = new Vector3 (movement.x, rb.velocity.y, movement.z); 
+
+		Debug.DrawRay (transform.position, rb.velocity.normalized * checkDist, Color.blue, .1f);
+
+		if (Physics.Raycast(transform.position, rb.velocity.normalized, checkDist, layer))
+		{
+			rb.velocity = Vector3.zero;
+		}
 	}
 }

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour {
 
-	public ListManager lists;
 	public MouseController mouse;
 	public bool isPulled;
 	Rigidbody rb;
@@ -14,28 +13,6 @@ public class EnemyBehaviour : MonoBehaviour {
 	void Start ()
 	{
 		rb = GetComponent<Rigidbody> ();
-	}
-
-	//https://docs.unity3d.com/ScriptReference/GeometryUtility.CalculateFrustumPlanes.html
-
-	//https://docs.unity3d.com/ScriptReference/GeometryUtility.TestPlanesAABB.html
-
-	void OnBecameVisible()
-	{
-		if (!lists.enemyDatabase.Contains(gameObject))
-			lists.enemyDatabase.Add (gameObject);
-	}
-
-	void OnBecameInvisible()
-	{
-		if (lists.enemyDatabase.Contains(gameObject))
-			lists.enemyDatabase.Remove (gameObject);
-	}
-
-	void OnDestroy()
-	{
-		if (lists.enemyDatabase.Contains(gameObject))
-			lists.enemyDatabase.Remove (gameObject);
 	}
 
 	public IEnumerator GetPulled ()

@@ -8,8 +8,10 @@ public class KeyboardController : MonoBehaviour {
 	private Rigidbody rb;
 	private float hinput;
 	private float vinput;
-
 	Vector3 movement;
+
+	public LayerMask layer;
+	public float checkDist;
 
 	void Start () 
 	{
@@ -26,5 +28,12 @@ public class KeyboardController : MonoBehaviour {
 	void FixedUpdate ()
 	{
 		rb.velocity = new Vector3 (movement.x, rb.velocity.y, movement.z); 
+
+		Debug.DrawRay (transform.position, rb.velocity.normalized * checkDist, Color.red, .1f);
+
+		if (Physics.Raycast(transform.position, rb.velocity.normalized, checkDist, layer))
+		{
+			rb.velocity = Vector3.zero;
+		}
 	}
 }
