@@ -8,12 +8,16 @@ public class EnemyBehaviour : MonoBehaviour {
 	public bool isPulled;
 	Rigidbody rb;
 	public GameObject dust;
-	HealthManager health;
+	EnemyHealthManager health;
+
+	//public Transform cam;
+	ScreenShakeGenerator shake;
 
 	void Start ()
 	{
 		rb = GetComponent<Rigidbody> ();
-		health = GetComponent<HealthManager> ();
+		health = GetComponent<EnemyHealthManager> ();
+		shake = Camera.main.GetComponent<ScreenShakeGenerator> ();
 	}
 
 	public IEnumerator GetPulled ()
@@ -36,7 +40,10 @@ public class EnemyBehaviour : MonoBehaviour {
 
 	void OnTriggerEnter (Collider col)
 	{
-		if (col.tag == "Player")
+		if (col.tag == "Player") 
+		{
 			health.hitPoints -= 1;
+			shake.ShakeScreen (.2f, .15f);
+		}
 	}
 }

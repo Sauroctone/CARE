@@ -20,14 +20,18 @@ public class LockZoneController : MonoBehaviour {
 
 	public float execSpeed;
 	public bool isExecuting;
+	public float execInterval;
 
 	TrailSpawner trailSpawn;
 	LockZoneCollision lockList;
 
 	VibrationManager vibration;
-	public float leftPower;
-	public float rightPower;
-	public float timer;
+	float leftPower;
+	float rightPower;
+
+	ScreenShakeGenerator shake;
+
+
 
 //	Mesh lockZoneMesh;
 
@@ -39,6 +43,7 @@ public class LockZoneController : MonoBehaviour {
 		lockList = lockZone.GetComponent<LockZoneCollision> ();
 		trailSpawn = GetComponent<TrailSpawner> ();
 		vibration = GetComponent<VibrationManager> ();
+		shake = Camera.main.GetComponent<ScreenShakeGenerator> ();
 
 		//lockZoneMesh = lockZone.GetComponent<MeshFilter>().mesh;
 
@@ -68,7 +73,7 @@ public class LockZoneController : MonoBehaviour {
 
 			leftPower += 0.1f * Time.deltaTime;
 			rightPower = leftPower;
-			//vibration.Vibrate (leftPower, rightPower);
+			vibration.Vibrate (leftPower, rightPower);
 		}
 
 		if (lockZone.activeSelf && !player.gamepad.GetButton ("B")) 
@@ -76,6 +81,7 @@ public class LockZoneController : MonoBehaviour {
 			lockZone.transform.localScale = new Vector3 (1, 1, 1);
 			scale = originalScale;
 			projector.position = new Vector3 (projector.position.x, originalHeight, projector.position.z);
+			vibration.Vibrate (0, 0);
 
 			lockZone.SetActive (false);
 
@@ -88,8 +94,15 @@ public class LockZoneController : MonoBehaviour {
 		if (dash.isDashing && isExecuting) 
 		{
 			StopCoroutine (LockZoneExecution ());
+			foreach (Transform enemy in lockList.lockedEnemies) 
+			{
+				enemy.GetComponent<Renderer> ().material = lockList.black;
+			}
+
 			lockList.lockedEnemies.Clear ();
 			isExecuting = false;
+
+			vibration.Vibrate (0, 0);
 		}
 	}
 
@@ -100,14 +113,23 @@ public class LockZoneController : MonoBehaviour {
 		if (trailSpawn.trailInstance == null) 
 			trailSpawn.trailInstance = Instantiate (trailSpawn.trail, transform) as GameObject;
 
+		Physics.IgnoreLayerCollision (LayerMask.NameToLayer ("Enemy"), LayerMask.NameToLayer ("PlayerTwo"));
+
 		while (lockList.lockedEnemies.Count > 0) 
 		{
 			Transform target = lockList.lockedEnemies [0];
 			rb.MovePosition (target.position);
-			Destroy (target.gameObject);
+			target.GetComponent<EnemyHealthManager> ().hitPoints = 0;
 			lockList.lockedEnemies.RemoveAt (0);
-			yield return new WaitForSeconds (0.1f);
+			shake.ShakeScreen (.2f, .15f);
+
+			if (lockList.lockedEnemies.Count > 0)
+				lockList.lockedEnemies [0].GetComponent<Renderer> ().material = lockList.darkRed;
+			
+			yield return new WaitForSeconds (execInterval);
 		}
+
+		Physics.IgnoreLayerCollision (LayerMask.NameToLayer ("Enemy"), LayerMask.NameToLayer ("PlayerTwo"), false);
 
 		player.speed = player.originalSpeed;
 		isExecuting = false;
