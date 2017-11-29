@@ -9,6 +9,7 @@ public class CrowdControlCollision : MonoBehaviour {
 	void OnTriggerEnter(Collider col)
 	{
 		ccEnemies.Add (col.transform);
+		//print ("enter");
 	}
 		
 	void OnTriggerExit(Collider col)
@@ -16,11 +17,13 @@ public class CrowdControlCollision : MonoBehaviour {
 		if (ccEnemies.Contains (col.transform)) 
 		{
 			ccEnemies.Remove (col.transform);
+			//print ("exit");
 		}
 	}
 
 	void OnDestroy ()
 	{
 		ccEnemies.Clear ();
+		//print ("clear");
 	}
 }

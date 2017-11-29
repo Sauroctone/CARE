@@ -13,7 +13,9 @@ public class DashController : MonoBehaviour {
 	public float dashStrength;
 	public float dashTime;
 	public float dashFreeze;
-	public float dashCooldown;
+	public float dashInterval;
+	public int dashCount;
+	public float dashRegen;
 
 	void Start () 
 	{
@@ -23,7 +25,7 @@ public class DashController : MonoBehaviour {
 
 	void Update () 
 	{
-		if (canDash && !isDashing && player.gamepad.GetButtonDown ("A")) 
+		if (dashCount > 0 && canDash && !isDashing && player.gamepad.GetButtonDown ("A")) 
 		{
 			StartCoroutine (Dash ());
 		}
@@ -33,7 +35,12 @@ public class DashController : MonoBehaviour {
 	{
 		canDash = false;
 		isDashing = true;
-		//rb.AddForce(player.lastDirection * dashStrength, ForceMode.Impulse);
+
+		if (dashCount == 3)
+			StartCoroutine (DashRegen ());
+		
+		dashCount -= 1;
+
 		player.speed = dashStrength;
 		Physics.IgnoreLayerCollision (LayerMask.NameToLayer ("Enemy"), LayerMask.NameToLayer ("PlayerTwo"));
 		Physics.IgnoreLayerCollision (LayerMask.NameToLayer ("DashEnemy"), LayerMask.NameToLayer ("PlayerTwo"), false);
@@ -50,8 +57,19 @@ public class DashController : MonoBehaviour {
 		Physics.IgnoreLayerCollision (LayerMask.NameToLayer ("DashEnemy"), LayerMask.NameToLayer ("PlayerTwo"));
 		//S'IL FINIT SON DASH DANS UN ENNEMI ?
 
-		yield return new WaitForSeconds (dashCooldown);
+		yield return new WaitForSeconds (dashInterval);
 
 		canDash = true;
+	}
+
+	IEnumerator DashRegen()
+	{
+		yield return new WaitForSeconds (dashRegen);
+		dashCount += 1;
+
+		if (dashCount < 3) 
+		{
+			StartCoroutine (DashRegen ());
+		}
 	}
 }

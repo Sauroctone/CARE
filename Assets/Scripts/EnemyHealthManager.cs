@@ -7,12 +7,6 @@ public class EnemyHealthManager : MonoBehaviour {
 	public int hitPoints;
 	public GameObject explosion;
 	GameObject explosionInst;
-	Renderer rend;
-
-	void Start ()
-	{
-		rend = GetComponent<Renderer> ();
-	}
 
 	void Update()
 	{

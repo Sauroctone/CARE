@@ -279,7 +279,9 @@ MonoBehaviour:
   dashStrength: 100
   dashTime: 0.05
   dashFreeze: 0.1
-  dashCooldown: 0.25
+  dashInterval: 0
+  dashCount: 3
+  dashRegen: 2
 --- !u!114 &114300864519510542
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -343,9 +345,7 @@ MonoBehaviour:
   heightIncrement: 5.5
   execSpeed: 80
   isExecuting: 0
-  leftPower: 0
-  rightPower: 0
-  timer: 0
+  execInterval: 0.2
 --- !u!114 &114941359140165166
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -358,6 +358,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lockedEnemies: []
+  darkRed: {fileID: 2100000, guid: 52cc01f2ea84ad646aaf34926d8d341a, type: 2}
+  darkerRed: {fileID: 2100000, guid: 216ea3c19238e2e42b62b8e847281bc9, type: 2}
+  black: {fileID: 2100000, guid: 1a17be2f3b5df7e42925bfb33e724533, type: 2}
 --- !u!119 &119251713536622022
 Projector:
   m_ObjectHideFlags: 1

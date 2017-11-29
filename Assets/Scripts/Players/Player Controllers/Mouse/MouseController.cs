@@ -7,8 +7,8 @@ public class MouseController: MonoBehaviour {
 
 	public GameObject healZone;
 	public GameObject ccZone;
-	private GameObject ccZoneInst;
-	private GameObject arrowInst;
+	GameObject ccZoneInst;
+	GameObject arrowInst;
 	public GameObject shield;
 	public Transform player2;
 	public Transform player1;
@@ -178,8 +178,11 @@ public class MouseController: MonoBehaviour {
 		if (arrowInst != null && arrowInst.activeSelf) 
 		{
 			pullDir = new Vector3 (transform.position.x - enemy.position.x, pullHeight, transform.position.z - enemy.position.z).normalized;
-			StartCoroutine (enemy.gameObject.GetComponent<EnemyBehaviour>().GetPulled());
-		}
+			StartCoroutine (enemy.gameObject.GetComponent<EnemyBehaviour> ().GetPulled ());
+		} 
+
+		else
+			print ("stun");
 
 		//else
 			//print ("stunned");
@@ -202,27 +205,20 @@ public class MouseController: MonoBehaviour {
 			ccZoneInst = GameObject.Instantiate (ccZone) as GameObject;
 			ccZoneInst.transform.position = clickPosition;
 
-			print ("zone créée");
-
-			yield return null;
+			yield return new WaitForFixedUpdate();
 		}
 
 		//On résout le crowd control des ennemis dans la zone
 
 		CrowdControlCollision ccList = ccZoneInst.GetComponent<CrowdControlCollision> ();
 
-		print (ccList.ccEnemies.Count);
-
 		if (ccList.ccEnemies.Count > 0) 
 		{
 			foreach (Transform enemy in ccList.ccEnemies) 
 			{
 				CrowdControl (enemy);
-				print ("stun");
 			}
 		}
-
-		yield return null;
 
 		Destroy (ccZoneInst);
 	}
