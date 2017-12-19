@@ -31,6 +31,8 @@ public class MouseController: MonoBehaviour {
 	public float pullHeight;
 
 	public ParticleSystem healParticles;
+	public HealthManager allyHealth;
+	public float healPerFrame;
 
 	void Start ()
 	{
@@ -178,8 +180,10 @@ public class MouseController: MonoBehaviour {
 		if (arrowInst != null && arrowInst.activeSelf) 
 		{
 			pullDir = new Vector3 (transform.position.x - enemy.position.x, pullHeight, transform.position.z - enemy.position.z).normalized;
-			StartCoroutine (enemy.gameObject.GetComponent<EnemyBehaviour> ().GetPulled ());
-		} 
+			EnemyBehaviour behaviour = enemy.gameObject.GetComponent<EnemyBehaviour> ();
+			behaviour.mouse = GetComponent<MouseController> ();
+			StartCoroutine (behaviour.GetPulled ());
+		}
 
 		else
 			print ("stun");
@@ -192,6 +196,12 @@ public class MouseController: MonoBehaviour {
 	{
 		if (!healParticles.isEmitting)
 			healParticles.Play();
+
+		allyHealth.health += healPerFrame * Time.deltaTime;
+		if (allyHealth.health > allyHealth.maxHealth)
+			allyHealth.health = allyHealth.maxHealth;
+
+		allyHealth.UpdateHealthBar ();
 	}
 
 	IEnumerator FastLeftClick()
