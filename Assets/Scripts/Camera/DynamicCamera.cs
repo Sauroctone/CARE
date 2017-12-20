@@ -112,5 +112,5 @@ public class DynamicCamera : MonoBehaviour {
 
 		GUI.DrawTexture (new Rect (minScreenPos.x, minScreenPos.y, Screen.width - minScreenPos.x * 2, Screen.height - minScreenPos.y * 2), debugTexture);
 		GUI.DrawTexture (new Rect (zoomRectOrigin.x, zoomRectOrigin.y, Screen.width - zoomRectOrigin.x * 2, Screen.height - zoomRectOrigin.y * 2), debugTexture);
-	}	*/
+	}*/	
 }

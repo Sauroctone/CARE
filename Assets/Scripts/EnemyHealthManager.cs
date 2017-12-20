@@ -12,6 +12,8 @@ public class EnemyHealthManager : MonoBehaviour {
 	{
 		if (hitPoints <= 0) 
 		{
+			if (
+
 			explosionInst = Instantiate (explosion) as GameObject;
 			explosionInst.transform.position = transform.position;
 			float dur = explosionInst.GetComponent<ParticleSystem> ().main.duration;

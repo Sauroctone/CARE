@@ -37,6 +37,7 @@ public class GamepadController : MonoBehaviour {
 
 	void Update()
 	{
+
 		hinput = gamepad.GetStick_L ().X;
 		vinput = gamepad.GetStick_L ().Y;
 
