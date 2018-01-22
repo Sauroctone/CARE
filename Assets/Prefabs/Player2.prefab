@@ -37,9 +37,10 @@ GameObject:
   - component: {fileID: 4582100740599066}
   - component: {fileID: 33685566632788076}
   - component: {fileID: 23393690053396254}
+  - component: {fileID: 135120300325426222}
   m_Layer: 0
   m_Name: Shield
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,6 +80,7 @@ GameObject:
   - component: {fileID: 114821127824628638}
   - component: {fileID: 114691264574183740}
   - component: {fileID: 114983157110146234}
+  - component: {fileID: 114059554121500516}
   m_Layer: 10
   m_Name: Player2
   m_TagString: Player
@@ -163,7 +165,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1461575410283130}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.83, y: 0, z: 0}
+  m_LocalPosition: {x: -3.52, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4582100740599066}
@@ -267,8 +269,26 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &114059554121500516
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1461575410283130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eecdd91f72bc05147b8d0896cbd00e4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasPack: 0
+  isInRange: 0
+  playerOne: {fileID: 0}
+  distanceToPlayer: 2
+  loadTime: 0.5
+  AButton: {fileID: 0}
+  allyHealthMan: {fileID: 0}
 --- !u!114 &114247635790403564
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -280,7 +300,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e760e2c5d7986b42b527a6f42ae2864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDashing: 0
   dashStrength: 100
   dashTime: 0.05
   dashFreeze: 0.1
@@ -299,8 +318,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  emptyColor: {r: 0.88235295, g: 0.1761359, b: 0, a: 1}
-  fullColor: {r: 0.20392157, g: 1, b: 0.40784314, a: 1}
+  emptyColor: {r: 0, g: 0, b: 0, a: 0}
+  fullColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114300864519510542
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -365,6 +384,10 @@ MonoBehaviour:
   execSpeed: 80
   isExecuting: 0
   execInterval: 0.2
+  initTimer: 2
+  zoneMat: {fileID: 2100000, guid: 8932d4f03cb1b85438eaa314a8b61a23, type: 2}
+  initColor: {r: 0.9485294, g: 0.5161116, b: 0.5161116, a: 0}
+  lockedColor: {r: 1, g: 0.19852942, b: 0.19852942, a: 0}
 --- !u!114 &114941359140165166
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -392,7 +415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  health: 10
+  health: 100
   healthBar: {fileID: 0}
   recovery: 1
 --- !u!119 &119251713536622022
@@ -413,6 +436,18 @@ Projector:
   m_IgnoreLayers:
     serializedVersion: 2
     m_Bits: 4294967039
+--- !u!135 &135120300325426222
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1357201064315680}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &136552484447988832
 CapsuleCollider:
   m_ObjectHideFlags: 1

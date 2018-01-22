@@ -12,7 +12,7 @@ public class EnemyHealthManager : MonoBehaviour {
 	{
 		if (hitPoints <= 0) 
 		{
-			if (
+			//if (
 
 			explosionInst = Instantiate (explosion) as GameObject;
 			explosionInst.transform.position = transform.position;

@@ -6,10 +6,11 @@ using UnityEngine.UI;
 public class DashController : MonoBehaviour {
 
 	GamepadController player;
+	StateManager stateMan;
+	HealthpackUsage hpUse;
 
 	//private Rigidbody rb;
 
-	public bool isDashing;
 	bool canDash = true;
 	public float dashStrength;
 	public float dashTime;
@@ -30,6 +31,8 @@ public class DashController : MonoBehaviour {
 	{
 	//	rb = GetComponent<Rigidbody> ();
 		player = GetComponent<GamepadController> ();
+		stateMan = Camera.main.GetComponent<StateManager> ();
+		hpUse = GetComponent<HealthpackUsage> ();
 
 		for (int i = 0; i < dashCount; i++) 
 		{
@@ -40,9 +43,18 @@ public class DashController : MonoBehaviour {
 
 	void Update () 
 	{
-		if (dashCount > 0 && canDash && !isDashing && player.gamepad.GetButtonDown ("A")) 
+		if (stateMan.playerTwoState == PlayerTwoStates.Normal ||
+		    stateMan.playerTwoState == PlayerTwoStates.Locking) 
 		{
-			StartCoroutine (Dash ());
+			if (dashCount > 0
+			    && canDash
+			    && player.gamepad.GetButtonDown ("A")) 
+			{
+				if (!hpUse.isInRange) 
+				{
+					StartCoroutine (Dash ());
+				}
+			}
 		}
 
 		if (dashCount < 3) 
@@ -51,10 +63,22 @@ public class DashController : MonoBehaviour {
 		}
 	}
 
+	public void TestDash()
+	{
+		if (stateMan.playerTwoState == PlayerTwoStates.Normal || 
+			stateMan.playerTwoState == PlayerTwoStates.Locking)
+		{
+			if (dashCount > 0 && canDash) 
+			{
+				StartCoroutine (Dash ());
+			}
+		}
+	}
+
 	IEnumerator Dash()
 	{
 		canDash = false;
-		isDashing = true;
+		stateMan.playerTwoState = PlayerTwoStates.Dashing; 
 
 		dashCount -= 1;
 
@@ -87,7 +111,7 @@ public class DashController : MonoBehaviour {
 
 		yield return new WaitForSeconds (dashFreeze);
 
-		isDashing = false;
+		stateMan.playerTwoState = PlayerTwoStates.Normal; 
 		player.speed = player.originalSpeed;
 		Physics.IgnoreLayerCollision (LayerMask.NameToLayer ("Enemy"), LayerMask.NameToLayer ("PlayerTwo"), false);
 		Physics.IgnoreLayerCollision (LayerMask.NameToLayer ("DashEnemy"), LayerMask.NameToLayer ("PlayerTwo"));

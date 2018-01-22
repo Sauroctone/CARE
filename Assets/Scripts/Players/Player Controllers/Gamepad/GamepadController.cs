@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GamepadController : MonoBehaviour {
 
+	StateManager stateMan;
+
 	public float speed;
 	public float originalSpeed;
 	Rigidbody rb;
@@ -18,7 +20,7 @@ public class GamepadController : MonoBehaviour {
 	GamepadManager manager;
 	public int player;
 
-	DashController dash;
+//	DashController dash;
 	LockZoneController lockZone;
 
 	public LayerMask layer;
@@ -27,8 +29,9 @@ public class GamepadController : MonoBehaviour {
 	void Start ()
 	{
 		rb = GetComponent<Rigidbody> ();
-		dash = GetComponent<DashController> ();
+//		dash = GetComponent<DashController> ();
 		lockZone = GetComponent<LockZoneController>	();
+		stateMan = Camera.main.GetComponent<StateManager> ();
 		speed = originalSpeed;
 
 		manager = GamepadManager.Instance;
@@ -37,18 +40,18 @@ public class GamepadController : MonoBehaviour {
 
 	void Update()
 	{
-
 		hinput = gamepad.GetStick_L ().X;
 		vinput = gamepad.GetStick_L ().Y;
 
 		direction = new Vector3 (hinput, 0, vinput).normalized;
 
-		if (direction != Vector3.zero && !dash.isDashing)
+		if (direction != Vector3.zero && stateMan.playerTwoState != PlayerTwoStates.Dashing)
 			lastDirection = direction;
 
-		transform.rotation = Quaternion.LookRotation (lastDirection);
+		if (lastDirection != Vector3.zero)
+			transform.rotation = Quaternion.LookRotation (lastDirection);
 
-		if (dash.isDashing)
+		if (stateMan.playerTwoState == PlayerTwoStates.Dashing)
 			movement = lastDirection * speed;
 		else
 			movement = direction * speed;

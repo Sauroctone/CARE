@@ -11,6 +11,11 @@ public class HealthManager : MonoBehaviour {
 	bool isRecovering;
 	public float recovery;
 
+	void Start()
+	{
+		UpdateHealthBar ();
+	}
+
 	public void TakeDamage(float _damage)
 	{
 		if (!isRecovering)

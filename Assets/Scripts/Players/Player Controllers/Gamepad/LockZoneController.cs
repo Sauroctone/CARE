@@ -5,7 +5,7 @@ using UnityEngine;
 public class LockZoneController : MonoBehaviour {
 
 	GamepadController player;
-	DashController dash;
+//	DashController dash;
 	Rigidbody rb;
 
 	public GameObject lockZone;
@@ -30,7 +30,16 @@ public class LockZoneController : MonoBehaviour {
 	float rightPower;
 
 	ScreenShakeGenerator shake;
+	StateManager stateMan;
 
+	public float initTimer;
+	bool isLocked;
+
+	public Material zoneMat;
+	public Color initColor;
+	public Color lockedColor;
+
+	Coroutine initCoroutine;
 
 
 //	Mesh lockZoneMesh;
@@ -38,12 +47,13 @@ public class LockZoneController : MonoBehaviour {
 	void Start()
 	{
 		player = GetComponent <GamepadController> ();
-		dash = GetComponent <DashController> ();
+		//dash = GetComponent <DashController> ();
 		rb = GetComponent<Rigidbody> ();
 		lockList = lockZone.GetComponent<LockZoneCollision> ();
 		trailSpawn = GetComponent<TrailSpawner> ();
 		vibration = GetComponent<VibrationManager> ();
 		shake = Camera.main.GetComponent<ScreenShakeGenerator> ();
+		stateMan = Camera.main.GetComponent<StateManager> ();
 
 		//lockZoneMesh = lockZone.GetComponent<MeshFilter>().mesh;
 
@@ -54,9 +64,21 @@ public class LockZoneController : MonoBehaviour {
 
 	void Update ()
 	{
-		if (!dash.isDashing && player.gamepad.GetButtonDown("B")) 
+		PlayerInput ();
+		DashCancelling ();
+	}
+
+	void PlayerInput()
+	{
+		if (stateMan.playerTwoState == PlayerTwoStates.Normal && player.gamepad.GetButtonDown("B")) 
 		{
 			lockZone.SetActive (true);
+			zoneMat.color = initColor;			
+			isLocked = false;
+			initCoroutine = StartCoroutine (LockZoneInitiation ());
+
+			stateMan.playerTwoState = PlayerTwoStates.Locking;
+
 			leftPower = 0.2f;
 			rightPower = 0.2f;
 		}
@@ -78,32 +100,83 @@ public class LockZoneController : MonoBehaviour {
 
 		if (lockZone.activeSelf && !player.gamepad.GetButton ("B")) 
 		{
-			lockZone.transform.localScale = new Vector3 (1, 1, 1);
-			scale = originalScale;
-			projector.position = new Vector3 (projector.position.x, originalHeight, projector.position.z);
+			CleanZone ();
+
 			vibration.Vibrate (0, 0);
 
-			lockZone.SetActive (false);
-
-			if (lockList.lockedEnemies.Count > 0)
-				StartCoroutine (LockZoneExecution ());
-			else
-				player.speed = player.originalSpeed;
-		}
-
-		if (dash.isDashing && isExecuting) 
-		{
-			StopCoroutine (LockZoneExecution ());
-			foreach (Transform enemy in lockList.lockedEnemies) 
+			if (lockList.lockedEnemies.Count > 0) 
 			{
-				enemy.GetComponent<Renderer> ().material = lockList.black;
+				if (isLocked)
+					StartCoroutine (LockZoneExecution ());
+				else 
+				{
+					CleanEnemies ();
+					player.speed = player.originalSpeed;
+					stateMan.playerTwoState = PlayerTwoStates.Normal;
+					StopCoroutine (initCoroutine);
+				}
+
 			}
 
-			lockList.lockedEnemies.Clear ();
-			isExecuting = false;
+			else
+			{
+				player.speed = player.originalSpeed;
+				stateMan.playerTwoState = PlayerTwoStates.Normal;
+				isLocked = false;
+				StopCoroutine (initCoroutine);
+			}
+		}
+
+	}
+
+	void DashCancelling ()
+	{
+		if (stateMan.playerTwoState == PlayerTwoStates.Dashing) 
+		{
+			if (isExecuting) 
+			{
+				StopCoroutine (LockZoneExecution ());
+				isExecuting = false;
+			} 
+
+			else if (lockZone.activeSelf) 
+			{
+				CleanZone ();
+			}
+
+			isLocked = false;
+			if (initCoroutine != null)
+				StopCoroutine (initCoroutine);
+			CleanEnemies ();
 
 			vibration.Vibrate (0, 0);
 		}
+	}
+
+	void CleanZone()
+	{
+		lockZone.transform.localScale = new Vector3 (1, 1, 1);
+		scale = originalScale;
+		projector.position = new Vector3 (projector.position.x, originalHeight, projector.position.z);
+
+		lockZone.SetActive (false);
+	}
+
+	void CleanEnemies()
+	{
+		foreach (Transform enemy in lockList.lockedEnemies) 
+		{
+			enemy.GetComponent<Renderer> ().material = lockList.black;
+		}
+
+		lockList.lockedEnemies.Clear ();
+	}
+
+	IEnumerator LockZoneInitiation()
+	{
+		yield return new WaitForSeconds (initTimer);
+		isLocked = true;
+		zoneMat.color = lockedColor;
 	}
 
 	IEnumerator LockZoneExecution()
@@ -133,6 +206,8 @@ public class LockZoneController : MonoBehaviour {
 
 		player.speed = player.originalSpeed;
 		isExecuting = false;
+		isLocked = false;
+		stateMan.playerTwoState = PlayerTwoStates.Normal;
 
 		//Interrompre cette coroutine en cas de collision avec un élément d'enviro (ex : rocher)
 	}

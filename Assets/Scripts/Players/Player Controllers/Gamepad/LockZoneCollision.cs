@@ -12,8 +12,13 @@ public class LockZoneCollision : MonoBehaviour {
 
 	void OnTriggerEnter(Collider col)
 	{
-		lockedEnemies.Add (col.transform);
-		col.GetComponent<Renderer>().material = darkerRed;
+		Vector3 viewPos = Camera.main.WorldToViewportPoint(col.transform.position);
+
+		if (viewPos.x >= 0 && viewPos.x <= 1 && viewPos.y >= 0 && viewPos.y <= 1 && viewPos.z > 0)
+		{
+			lockedEnemies.Add (col.transform);
+			col.GetComponent<Renderer> ().material = darkerRed;
+		}
 	}
 
 	void OnTriggerExit(Collider col)
@@ -29,9 +34,20 @@ public class LockZoneCollision : MonoBehaviour {
 	{
 		if (lockedEnemies.Count > 0) 
 		{
-			Renderer rend = lockedEnemies [0].GetComponent<Renderer> ();
+			Renderer rend = lockedEnemies [0].GetComponent<Renderer> (); //SAAAAALE
 			if (rend.material != darkRed)
 				rend.material = darkRed;
+
+		/*	for (int i = 0; i < lockedEnemies.Count; i++) 
+			{
+				Vector3 viewPos = Camera.main.WorldToViewportPoint(lockedEnemies[i].position);
+
+				if (viewPos.x < 0 || viewPos.x > 1 || viewPos.y < 0 || viewPos.y > 1 || viewPos.z <= 0) 
+				{
+					lockedEnemies.RemoveAt(i);
+					print ("removed"); 
+				}
+			} */
 		}
 	}
 }
