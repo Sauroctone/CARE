@@ -26,7 +26,9 @@ public class GamepadController : MonoBehaviour {
 	public LayerMask layer;
 	public float checkDist;
 
-	void Start ()
+    public Animator anim;
+
+    void Start ()
 	{
 		rb = GetComponent<Rigidbody> ();
 //		dash = GetComponent<DashController> ();
@@ -52,9 +54,24 @@ public class GamepadController : MonoBehaviour {
 			transform.rotation = Quaternion.LookRotation (lastDirection);
 
 		if (stateMan.playerTwoState == PlayerTwoStates.Dashing)
+        {
 			movement = lastDirection * speed;
+        }
+
 		else
+        {
 			movement = direction * speed;
+
+            if (movement != Vector3.zero)
+            {
+                anim.SetBool("isMoving", true);
+            }
+        }
+
+        if (anim.GetBool("isMoving") && rb.velocity.magnitude < 0.1f)
+        {
+            anim.SetBool("isMoving", false);
+        }
 	}
 
 	void FixedUpdate ()

@@ -27,6 +27,8 @@ public class DashController : MonoBehaviour {
 	public Color emptyColor;
 	public Color fullColor;
 
+    public Animator anim;
+
 	void Start () 
 	{
 	//	rb = GetComponent<Rigidbody> ();
@@ -77,7 +79,8 @@ public class DashController : MonoBehaviour {
 
 	IEnumerator Dash()
 	{
-		canDash = false;
+        anim.SetTrigger("dashes");
+        canDash = false;
 		stateMan.playerTwoState = PlayerTwoStates.Dashing; 
 
 		dashCount -= 1;
