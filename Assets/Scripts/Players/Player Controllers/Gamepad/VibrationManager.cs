@@ -25,6 +25,7 @@ public class VibrationManager : MonoBehaviour {
 	{
 		isVibrating = true;
 		yield return new WaitForSeconds (timer);
-		isVibrating = false;
+        Vibrate(0, 0);
+        isVibrating = false;
 	}
 }
