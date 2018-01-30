@@ -9,9 +9,13 @@ public class KeyboardController : MonoBehaviour {
 	private float hinput;
 	private float vinput;
 	Vector3 movement;
+    Vector3 direction;
+   // public float rotLerp;
 
 	public LayerMask layer;
 	public float checkDist;
+
+    public Animator anim;
 
 	void Start () 
 	{
@@ -22,7 +26,19 @@ public class KeyboardController : MonoBehaviour {
 	{
 		hinput = Input.GetAxisRaw ("Horizontal");
 		vinput = Input.GetAxisRaw ("Vertical");
-		movement = new Vector3 (hinput, 0, vinput).normalized * speed;
+        direction = new Vector3(hinput, 0, vinput);
+        movement = direction * speed;
+
+        if (direction != Vector3.zero)
+        {
+            //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), rotLerp);
+
+            if (rb.velocity != Vector3.zero)
+            {
+                if (!anim.GetBool("isMoving"))
+                    anim.SetBool("isMoving", true);
+            }
+        }
 	}
 
 	void FixedUpdate ()
@@ -35,5 +51,11 @@ public class KeyboardController : MonoBehaviour {
 		{
 			rb.velocity = Vector3.zero;
 		}
-	}
+
+        if (rb.velocity == Vector3.zero)
+        {
+            if (anim.GetBool("isMoving"))
+                anim.SetBool("isMoving", false);
+        }
+    }
 }

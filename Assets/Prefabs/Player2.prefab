@@ -2729,7 +2729,7 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!137 &137595955905457456
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -2744,7 +2744,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: f952aa03be9b60b4cac9b07d8e77ad55, type: 3}
+  - {fileID: 2100000, guid: 8e69d7da6c970484b9e94350eadc510b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
