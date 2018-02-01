@@ -70,7 +70,7 @@ public class LockZoneController : MonoBehaviour {
 
 	void PlayerInput()
 	{
-		if (stateMan.playerTwoState == PlayerTwoStates.Normal && player.gamepad.GetButtonDown("B")) 
+		if (stateMan.playerTwoState == PlayerTwoStates.Normal && player.gamepad.GetButtonDown("X")) 
 		{
 			lockZone.SetActive (true);
 			zoneMat.color = initColor;			
@@ -83,7 +83,7 @@ public class LockZoneController : MonoBehaviour {
 			rightPower = 0.2f;
 		}
 
-		if (lockZone.activeSelf && player.gamepad.GetButton ("B"))
+		if (lockZone.activeSelf && player.gamepad.GetButton ("X"))
 		{
 			scale += scaleIncrement * Time.deltaTime;
 			lockZone.transform.localScale = new Vector3 (scale, 1, scale);
@@ -98,7 +98,7 @@ public class LockZoneController : MonoBehaviour {
 			vibration.Vibrate (leftPower, rightPower);
 		}
 
-		if (lockZone.activeSelf && !player.gamepad.GetButton ("B")) 
+		if (lockZone.activeSelf && !player.gamepad.GetButton ("X")) 
 		{
 			CleanZone ();
 

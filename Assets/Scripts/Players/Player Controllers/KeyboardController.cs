@@ -16,6 +16,8 @@ public class KeyboardController : MonoBehaviour {
 	public float checkDist;
 
     public Animator anim;
+    public MouseController mouse;
+    float orientation;
 
 	void Start () 
 	{
@@ -29,6 +31,8 @@ public class KeyboardController : MonoBehaviour {
         direction = new Vector3(hinput, 0, vinput);
         movement = direction * speed;
 
+       // print("dir = " + direction);
+
         if (direction != Vector3.zero)
         {
             //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), rotLerp);
@@ -37,8 +41,14 @@ public class KeyboardController : MonoBehaviour {
             {
                 if (!anim.GetBool("isMoving"))
                     anim.SetBool("isMoving", true);
+
+                orientation = direction.z - mouse.lookDir.z;
+                anim.SetFloat("orientation", orientation);
+                print(orientation);
             }
         }
+
+       
 	}
 
 	void FixedUpdate ()

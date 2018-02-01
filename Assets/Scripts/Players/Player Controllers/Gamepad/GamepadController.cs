@@ -27,6 +27,7 @@ public class GamepadController : MonoBehaviour {
 	public float checkDist;
 
     public Animator anim;
+    public ParticleSystem snow;
 
     void Start ()
 	{
@@ -62,15 +63,23 @@ public class GamepadController : MonoBehaviour {
         {
 			movement = direction * speed;
 
-            if (movement != Vector3.zero)
+            if (movement != Vector3.zero )
             {
-                anim.SetBool("isMoving", true);
+                if (!anim.GetBool("isMoving"))
+                    anim.SetBool("isMoving", true);
+
+                if (!snow.isPlaying)
+                    snow.Play();
             }
         }
 
-        if (anim.GetBool("isMoving") && rb.velocity.magnitude < 0.1f)
+        if (rb.velocity.magnitude < 0.1f)
         {
-            anim.SetBool("isMoving", false);
+            if (anim.GetBool("isMoving"))
+                anim.SetBool("isMoving", false);
+
+            if (snow.isPlaying)
+                snow.Stop();
         }
 	}
 

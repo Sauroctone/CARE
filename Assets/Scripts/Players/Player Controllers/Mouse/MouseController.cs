@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class MouseController: MonoBehaviour {
 
+    public Vector3 lookDir;
+
 	public GameObject healZone;
 	public GameObject ccZone;
 	GameObject ccZoneInst;
@@ -158,7 +160,11 @@ public class MouseController: MonoBehaviour {
 
 		//On oriente l'avatar vers la souris
 		player1.LookAt (new Vector3 (transform.position.x, player1.transform.position.y, transform.position.z));
-	}
+
+        lookDir = (new Vector3(transform.position.x, 0, transform.position.z) - new Vector3(player1.position.x, 0, player1.position.z)).normalized;
+       // print("lookDir = " + lookDir);
+
+    }
 
 	void CheckShield ()
 	{

@@ -105,12 +105,15 @@ public class DashController : MonoBehaviour {
 		}
 
 		player.speed = dashStrength;
+        Vector3 lastPos = transform.position;
+
 		Physics.IgnoreLayerCollision (LayerMask.NameToLayer ("Enemy"), LayerMask.NameToLayer ("PlayerTwo"));
 		Physics.IgnoreLayerCollision (LayerMask.NameToLayer ("DashEnemy"), LayerMask.NameToLayer ("PlayerTwo"), false);
 
 		yield return new WaitForSeconds(dashTime);
 	
 		player.speed = 0;
+        print((lastPos - transform.position).magnitude);
 
 		yield return new WaitForSeconds (dashFreeze);
 
