@@ -27,7 +27,7 @@ public class GamepadController : MonoBehaviour {
 	public float checkDist;
 
     public Animator anim;
-    public ParticleSystem snow;
+   // public ParticleSystem snow;
 
     void Start ()
 	{
@@ -67,9 +67,9 @@ public class GamepadController : MonoBehaviour {
             {
                 if (!anim.GetBool("isMoving"))
                     anim.SetBool("isMoving", true);
-
+                /*
                 if (!snow.isPlaying)
-                    snow.Play();
+                    snow.Play();*/
             }
         }
 
@@ -77,9 +77,9 @@ public class GamepadController : MonoBehaviour {
         {
             if (anim.GetBool("isMoving"))
                 anim.SetBool("isMoving", false);
-
+/*
             if (snow.isPlaying)
-                snow.Stop();
+                snow.Stop();*/
         }
 	}
 

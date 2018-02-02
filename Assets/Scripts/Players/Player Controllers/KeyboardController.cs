@@ -19,6 +19,8 @@ public class KeyboardController : MonoBehaviour {
     public MouseController mouse;
     float orientation;
 
+    public ParticleSystem snow;
+
 	void Start () 
 	{
 		rb = GetComponent<Rigidbody> ();
@@ -28,7 +30,7 @@ public class KeyboardController : MonoBehaviour {
 	{
 		hinput = Input.GetAxisRaw ("Horizontal");
 		vinput = Input.GetAxisRaw ("Vertical");
-        direction = new Vector3(hinput, 0, vinput);
+        direction = new Vector3(hinput, 0, vinput).normalized;
         movement = direction * speed;
 
        // print("dir = " + direction);
@@ -42,9 +44,12 @@ public class KeyboardController : MonoBehaviour {
                 if (!anim.GetBool("isMoving"))
                     anim.SetBool("isMoving", true);
 
-                orientation = direction.z - mouse.lookDir.z;
+           //     if (!snow.isPlaying)
+                   // snow.Play();
+
+                orientation = Mathf.Abs(direction.z - mouse.lookDir.z);
                 anim.SetFloat("orientation", orientation);
-                print(orientation);
+              //  print(orientation);
             }
         }
 
@@ -66,6 +71,11 @@ public class KeyboardController : MonoBehaviour {
         {
             if (anim.GetBool("isMoving"))
                 anim.SetBool("isMoving", false);
+
+        //    if (snow.isPlaying)
+         //       snow.Stop();
         }
+
+       // print(rb.velocity.magnitude);
     }
 }

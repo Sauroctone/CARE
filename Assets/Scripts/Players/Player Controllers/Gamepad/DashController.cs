@@ -113,7 +113,7 @@ public class DashController : MonoBehaviour {
 		yield return new WaitForSeconds(dashTime);
 	
 		player.speed = 0;
-        print((lastPos - transform.position).magnitude);
+  //      print((lastPos - transform.position).magnitude);
 
 		yield return new WaitForSeconds (dashFreeze);
 
