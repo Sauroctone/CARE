@@ -101,7 +101,8 @@ public class EnemyBehaviour : MonoBehaviour {
 		return target;
 	}
 
-	public IEnumerator GetPulled () {
+	public IEnumerator GetPulled ()
+    {
 		isPulled = true;
 		yield return new WaitForSeconds (0.2f);
 
@@ -118,8 +119,10 @@ public class EnemyBehaviour : MonoBehaviour {
 		isPulled = false;
 	}
 
-	void OnCollisionEnter (Collision col) {
-		if (col.gameObject.tag == "Player") {
+	void OnTriggerEnter (Collider col)
+    {
+		if (col.gameObject.tag == "Player")
+        {
 			health.hitPoints -= 1;
           //  Debug.Log("ERITHBRTBHIRETIBHERTBIHERTBHIERTBIHRETB");
 			shake.ShakeScreen (.2f, .15f);

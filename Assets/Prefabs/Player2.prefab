@@ -2669,13 +2669,14 @@ MonoBehaviour:
   emptyColor: {r: 1, g: 0.2647059, b: 0.2647059, a: 1}
   fullColor: {r: 0.2647059, g: 1, b: 0.36105487, a: 1}
   anim: {fileID: 95667211263352246}
+  trail: {fileID: 1483047586148370, guid: 26abb0a16914cf74bb2f14ca4647d7e8, type: 2}
 --- !u!114 &114300864519510542
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1461575410283130}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e78bde962b58afa4283c1454cf67554b, type: 3}
   m_Name: 
@@ -2738,6 +2739,7 @@ MonoBehaviour:
   zoneMat: {fileID: 2100000, guid: 8932d4f03cb1b85438eaa314a8b61a23, type: 2}
   initColor: {r: 0.9485294, g: 0.5161116, b: 0.5161116, a: 0}
   lockedColor: {r: 1, g: 0.19852942, b: 0.19852942, a: 0}
+  trail: {fileID: 1483047586148370, guid: 26abb0a16914cf74bb2f14ca4647d7e8, type: 2}
 --- !u!114 &114880012461965774
 MonoBehaviour:
   m_ObjectHideFlags: 1

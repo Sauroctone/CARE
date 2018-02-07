@@ -29,7 +29,10 @@ public class DashController : MonoBehaviour {
 
     public Animator anim;
 
-	void Start () 
+    public GameObject trail;
+    GameObject trailInstance;
+
+    void Start () 
 	{
 	//	rb = GetComponent<Rigidbody> ();
 		player = GetComponent<GamepadController> ();
@@ -110,7 +113,10 @@ public class DashController : MonoBehaviour {
 		Physics.IgnoreLayerCollision (LayerMask.NameToLayer ("Enemy"), LayerMask.NameToLayer ("PlayerTwo"));
 		Physics.IgnoreLayerCollision (LayerMask.NameToLayer ("DashEnemy"), LayerMask.NameToLayer ("PlayerTwo"), false);
 
-		yield return new WaitForSeconds(dashTime);
+        if (trailInstance == null)
+            trailInstance = Instantiate(trail, transform) as GameObject;
+
+        yield return new WaitForSeconds(dashTime);
 	
 		player.speed = 0;
   //      print((lastPos - transform.position).magnitude);

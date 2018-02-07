@@ -41,10 +41,14 @@ public class LockZoneController : MonoBehaviour {
 
 	Coroutine initCoroutine;
 
+    public GameObject trail;
+    GameObject trailInstance;
 
-//	Mesh lockZoneMesh;
 
-	void Start()
+
+    //	Mesh lockZoneMesh;
+
+    void Start()
 	{
 		player = GetComponent <GamepadController> ();
 		//dash = GetComponent <DashController> ();
@@ -103,6 +107,7 @@ public class LockZoneController : MonoBehaviour {
 			CleanZone ();
 
 			vibration.Vibrate (0, 0);
+
 
 			if (lockList.lockedEnemies.Count > 0) 
 			{
@@ -183,10 +188,10 @@ public class LockZoneController : MonoBehaviour {
 	{
 		isExecuting = true;
 
-		if (trailSpawn.trailInstance == null) 
-			trailSpawn.trailInstance = Instantiate (trailSpawn.trail, transform) as GameObject;
+        if (trailInstance == null)
+            trailInstance = Instantiate(trail, transform) as GameObject;
 
-		Physics.IgnoreLayerCollision (LayerMask.NameToLayer ("Enemy"), LayerMask.NameToLayer ("PlayerTwo"));
+        Physics.IgnoreLayerCollision (LayerMask.NameToLayer ("Enemy"), LayerMask.NameToLayer ("PlayerTwo"));
 
 		while (lockList.lockedEnemies.Count > 0) 
 		{
