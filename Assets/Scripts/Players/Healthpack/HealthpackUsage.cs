@@ -18,6 +18,7 @@ public class HealthpackUsage : MonoBehaviour {
 
 	public GameObject AButton;
 	public HealthManager allyHealthMan;
+    public ParticleSystem healParticles;
 
 	public Image loader;
 
@@ -100,7 +101,7 @@ public class HealthpackUsage : MonoBehaviour {
 		yield return null;
 		allyHealthMan.health = allyHealthMan.maxHealth;
 		allyHealthMan.UpdateHealthBar ();
-		print ("gave healthpack!");
+        healParticles.Play();
 		inputLoad = 0;
 		loader.fillAmount = 0;
 		stateMan.playerTwoState = PlayerTwoStates.Normal;

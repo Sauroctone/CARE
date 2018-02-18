@@ -1,0 +1,362 @@
+fileFormatVersion: 2
+guid: d2fd104d189551748bf4c13cdda3e9e5
+timeCreated: 1517416852
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: belly
+    100002: body_end
+    100004: C_chest
+    100006: C_L_mechhand
+    100008: C_L_mechwrist
+    100010: C_main
+    100012: C_R_mech2
+    100014: C_R_mechfing2
+    100016: C_R_mechwrist
+    100018: chest
+    100020: //RootNode
+    100022: head
+    100024: hips
+    100026: L_arm
+    100028: L_arm2
+    100030: L_arm_end
+    100032: L_fing1
+    100034: L_fing12
+    100036: L_fing1_end
+    100038: L_fing2
+    100040: L_fing22
+    100042: L_fing2_end
+    100044: L_fing3
+    100046: L_fing32
+    100048: L_fing_end
+    100050: L_foot
+    100052: L_foot_end
+    100054: L_hand
+    100056: L_leg
+    100058: L_leg2
+    100060: L_leg_end
+    100062: L_mech
+    100064: L_mech2
+    100066: L_mech_end
+    100068: L_mechfing1
+    100070: L_mechfing2
+    100072: L_mechfing2_end
+    100074: L_mechfing3
+    100076: L_mechfing3_end
+    100078: L_mechfing4
+    100080: L_mechfing4_end
+    100082: L_mechfing_end
+    100084: L_thumb
+    100086: L_thumb2
+    100088: L_thumb_end
+    100090: Object013
+    100092: R_arm
+    100094: R_arm2
+    100096: R_arm_end
+    100098: R_fing1
+    100100: R_fing12
+    100102: R_fing2
+    100104: R_fing22
+    100106: R_fing2end
+    100108: R_fing3
+    100110: R_fing32
+    100112: R_fing3end
+    100114: R_fing_end
+    100116: R_foot
+    100118: R_foot_end
+    100120: R_hand
+    100122: R_leg
+    100124: R_leg2
+    100126: R_leg_end
+    100128: R_mech
+    100130: R_mech_2
+    100132: R_mech_end
+    100134: R_mechfing1
+    100136: R_mechfing2
+    100138: R_mechfing2_end
+    100140: R_mechfing3
+    100142: R_mechfing3_end
+    100144: R_mechfing4
+    100146: R_mechfing4_end
+    100148: R_mechfing_end
+    100150: R_thumb
+    100152: R_thumb2
+    100154: R_thumb_end
+    400000: belly
+    400002: body_end
+    400004: C_chest
+    400006: C_L_mechhand
+    400008: C_L_mechwrist
+    400010: C_main
+    400012: C_R_mech2
+    400014: C_R_mechfing2
+    400016: C_R_mechwrist
+    400018: chest
+    400020: //RootNode
+    400022: head
+    400024: hips
+    400026: L_arm
+    400028: L_arm2
+    400030: L_arm_end
+    400032: L_fing1
+    400034: L_fing12
+    400036: L_fing1_end
+    400038: L_fing2
+    400040: L_fing22
+    400042: L_fing2_end
+    400044: L_fing3
+    400046: L_fing32
+    400048: L_fing_end
+    400050: L_foot
+    400052: L_foot_end
+    400054: L_hand
+    400056: L_leg
+    400058: L_leg2
+    400060: L_leg_end
+    400062: L_mech
+    400064: L_mech2
+    400066: L_mech_end
+    400068: L_mechfing1
+    400070: L_mechfing2
+    400072: L_mechfing2_end
+    400074: L_mechfing3
+    400076: L_mechfing3_end
+    400078: L_mechfing4
+    400080: L_mechfing4_end
+    400082: L_mechfing_end
+    400084: L_thumb
+    400086: L_thumb2
+    400088: L_thumb_end
+    400090: Object013
+    400092: R_arm
+    400094: R_arm2
+    400096: R_arm_end
+    400098: R_fing1
+    400100: R_fing12
+    400102: R_fing2
+    400104: R_fing22
+    400106: R_fing2end
+    400108: R_fing3
+    400110: R_fing32
+    400112: R_fing3end
+    400114: R_fing_end
+    400116: R_foot
+    400118: R_foot_end
+    400120: R_hand
+    400122: R_leg
+    400124: R_leg2
+    400126: R_leg_end
+    400128: R_mech
+    400130: R_mech_2
+    400132: R_mech_end
+    400134: R_mechfing1
+    400136: R_mechfing2
+    400138: R_mechfing2_end
+    400140: R_mechfing3
+    400142: R_mechfing3_end
+    400144: R_mechfing4
+    400146: R_mechfing4_end
+    400148: R_mechfing_end
+    400150: R_thumb
+    400152: R_thumb2
+    400154: R_thumb_end
+    2100000: 'Material #26'
+    4300000: Object013
+    7400000: Idle
+    7400002: Run
+    7400004: Dash
+    9500000: //RootNode
+    13700000: Object013
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 2
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Run
+      takeName: Take 001
+      firstFrame: 30
+      lastFrame: 57
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.22784817
+        functionName: OnRightFootExit
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.7675676
+        functionName: OnLeftFootExit
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.016513798
+        functionName: OnRightFootEnter
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.5394496
+        functionName: OnLeftFootEnter
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Dash
+      takeName: Take 001
+      firstFrame: 70
+      lastFrame: 82
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

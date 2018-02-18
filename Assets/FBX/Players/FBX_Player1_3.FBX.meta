@@ -1,0 +1,456 @@
+fileFormatVersion: 2
+guid: e9ec36c5d00d62b449ddfbfd0d2307b2
+timeCreated: 1517505812
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Body
+    100002: Body_end
+    100004: C_main
+    100006: //RootNode
+    100008: L_arm1
+    100010: L_arm2
+    100012: L_arm_end
+    100014: L_finger1_1
+    100016: L_finger1_2
+    100018: L_finger1_end
+    100020: L_finger2_1
+    100022: L_finger2_2
+    100024: L_finger2_end
+    100026: L_finger3_1
+    100028: L_finger3_2
+    100030: L_finger3_end
+    100032: L_foot
+    100034: L_foot_end
+    100036: L_hand
+    100038: L_leg1
+    100040: L_leg2
+    100042: L_leg_end
+    100044: L_mech1
+    100046: L_mech2
+    100048: L_mech_end
+    100050: L_mech_finger1
+    100052: L_mech_finger1_end
+    100054: L_mech_finger2
+    100056: L_mech_finger2_end
+    100058: L_mech_finger3
+    100060: L_mech_finger3_end
+    100062: L_mech_hand
+    100064: L_thumb_1
+    100066: L_thumb_2
+    100068: L_thumb_end
+    100070: Object017
+    100072: Particle View 001
+    100074: R_arm1
+    100076: R_arm2
+    100078: R_arm_end
+    100080: R_finger1_1
+    100082: R_finger1_2
+    100084: R_finger1_end
+    100086: R_finger2_1
+    100088: R_finger2_2
+    100090: R_finger2_end
+    100092: R_finger3_1
+    100094: R_finger3_2
+    100096: R_finger3_end
+    100098: R_foot
+    100100: R_foot_end
+    100102: R_hand
+    100104: R_leg1
+    100106: R_leg2
+    100108: R_leg_end
+    100110: R_mech1
+    100112: R_mech2
+    100114: R_mech_end
+    100116: R_mech_finger1
+    100118: R_mech_finger2
+    100120: R_mech_finger3
+    100122: R_mech_finger3_end
+    100124: R_mech_finger_end
+    100126: R_mech_finger_end 1
+    100128: R_mech_hand
+    100130: R_thumb1
+    100132: R_thumb2
+    100134: R_thumb_end
+    400000: Body
+    400002: Body_end
+    400004: C_main
+    400006: //RootNode
+    400008: L_arm1
+    400010: L_arm2
+    400012: L_arm_end
+    400014: L_finger1_1
+    400016: L_finger1_2
+    400018: L_finger1_end
+    400020: L_finger2_1
+    400022: L_finger2_2
+    400024: L_finger2_end
+    400026: L_finger3_1
+    400028: L_finger3_2
+    400030: L_finger3_end
+    400032: L_foot
+    400034: L_foot_end
+    400036: L_hand
+    400038: L_leg1
+    400040: L_leg2
+    400042: L_leg_end
+    400044: L_mech1
+    400046: L_mech2
+    400048: L_mech_end
+    400050: L_mech_finger1
+    400052: L_mech_finger1_end
+    400054: L_mech_finger2
+    400056: L_mech_finger2_end
+    400058: L_mech_finger3
+    400060: L_mech_finger3_end
+    400062: L_mech_hand
+    400064: L_thumb_1
+    400066: L_thumb_2
+    400068: L_thumb_end
+    400070: Object017
+    400072: Particle View 001
+    400074: R_arm1
+    400076: R_arm2
+    400078: R_arm_end
+    400080: R_finger1_1
+    400082: R_finger1_2
+    400084: R_finger1_end
+    400086: R_finger2_1
+    400088: R_finger2_2
+    400090: R_finger2_end
+    400092: R_finger3_1
+    400094: R_finger3_2
+    400096: R_finger3_end
+    400098: R_foot
+    400100: R_foot_end
+    400102: R_hand
+    400104: R_leg1
+    400106: R_leg2
+    400108: R_leg_end
+    400110: R_mech1
+    400112: R_mech2
+    400114: R_mech_end
+    400116: R_mech_finger1
+    400118: R_mech_finger2
+    400120: R_mech_finger3
+    400122: R_mech_finger3_end
+    400124: R_mech_finger_end
+    400126: R_mech_finger_end 1
+    400128: R_mech_hand
+    400130: R_thumb1
+    400132: R_thumb2
+    400134: R_thumb_end
+    2100000: 'Material #62'
+    4300000: Object017
+    7400000: WalkRight
+    7400002: WalkLeft
+    7400004: Idle
+    7400006: WalkFront
+    7400008: WalkBack
+    9500000: //RootNode
+    13700000: Object017
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: WalkRight
+      takeName: Take 001
+      firstFrame: 130
+      lastFrame: 149
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.0071224426
+        functionName: OnRightFootEnter
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.52991426
+        functionName: OnRightFootExit
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.49430203
+        functionName: OnLeftFootEnter
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.045584388
+        functionName: OnLeftFootExit
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: WalkLeft
+      takeName: Take 001
+      firstFrame: 160
+      lastFrame: 179
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 2
+      lastFrame: 36
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: WalkFront
+      takeName: Take 001
+      firstFrame: 51
+      lastFrame: 82
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0
+        functionName: OnRightFootEnter
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.52392626
+        functionName: OnLeftFootEnter
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.5486238
+        functionName: OnRightFootExit
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.07339447
+        functionName: OnLeftFootExit
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: WalkBack
+      takeName: Take 001
+      firstFrame: 89
+      lastFrame: 120
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.40041932
+        functionName: OnRightFootEnter
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.89517814
+        functionName: OnLeftFootEnter
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.53564906
+        functionName: OnLeftFootExit
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.029250499
+        functionName: OnRightFootExit
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -41,8 +41,14 @@ public class LockZoneController : MonoBehaviour {
 
 	Coroutine initCoroutine;
 
+    public GameObject trail;
+    GameObject trailInstance;
 
-//	Mesh lockZoneMesh;
+	//	Mesh lockZoneMesh;
+
+	[Header ("--- SOUND EFFECTS ---")]
+	public AudioSource lockzoneLoad;
+	public AudioSource lockzoneHit;
 
 	void Start()
 	{
@@ -70,7 +76,7 @@ public class LockZoneController : MonoBehaviour {
 
 	void PlayerInput()
 	{
-		if (stateMan.playerTwoState == PlayerTwoStates.Normal && player.gamepad.GetButtonDown("B")) 
+		if (stateMan.playerTwoState == PlayerTwoStates.Normal && player.gamepad.GetButtonDown("X")) 
 		{
 			lockZone.SetActive (true);
 			zoneMat.color = initColor;			
@@ -83,7 +89,7 @@ public class LockZoneController : MonoBehaviour {
 			rightPower = 0.2f;
 		}
 
-		if (lockZone.activeSelf && player.gamepad.GetButton ("B"))
+		if (lockZone.activeSelf && player.gamepad.GetButton ("X"))
 		{
 			scale += scaleIncrement * Time.deltaTime;
 			lockZone.transform.localScale = new Vector3 (scale, 1, scale);
@@ -98,11 +104,12 @@ public class LockZoneController : MonoBehaviour {
 			vibration.Vibrate (leftPower, rightPower);
 		}
 
-		if (lockZone.activeSelf && !player.gamepad.GetButton ("B")) 
+		if (lockZone.activeSelf && !player.gamepad.GetButton ("X")) 
 		{
 			CleanZone ();
 
 			vibration.Vibrate (0, 0);
+
 
 			if (lockList.lockedEnemies.Count > 0) 
 			{
@@ -155,6 +162,7 @@ public class LockZoneController : MonoBehaviour {
 
 	void CleanZone()
 	{
+		lockzoneLoad.Stop ();
 		lockZone.transform.localScale = new Vector3 (1, 1, 1);
 		scale = originalScale;
 		projector.position = new Vector3 (projector.position.x, originalHeight, projector.position.z);
@@ -174,6 +182,7 @@ public class LockZoneController : MonoBehaviour {
 
 	IEnumerator LockZoneInitiation()
 	{
+		SoundFunctions.PlaySound (lockzoneLoad, true, 1.0f, 1.05f, false);
 		yield return new WaitForSeconds (initTimer);
 		isLocked = true;
 		zoneMat.color = lockedColor;
@@ -183,10 +192,10 @@ public class LockZoneController : MonoBehaviour {
 	{
 		isExecuting = true;
 
-		if (trailSpawn.trailInstance == null) 
-			trailSpawn.trailInstance = Instantiate (trailSpawn.trail, transform) as GameObject;
+        if (trailInstance == null)
+            trailInstance = Instantiate(trail, transform) as GameObject;
 
-		Physics.IgnoreLayerCollision (LayerMask.NameToLayer ("Enemy"), LayerMask.NameToLayer ("PlayerTwo"));
+        Physics.IgnoreLayerCollision (LayerMask.NameToLayer ("Enemy"), LayerMask.NameToLayer ("PlayerTwo"));
 
 		while (lockList.lockedEnemies.Count > 0) 
 		{

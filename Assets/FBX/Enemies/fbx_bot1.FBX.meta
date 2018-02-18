@@ -1,0 +1,168 @@
+fileFormatVersion: 2
+guid: 2eaf247721a258d4d8c9ad528fc35fdd
+timeCreated: 1518468921
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: B_L_foot
+    100002: B_L_foot_end
+    100004: B_L_leg1
+    100006: B_L_leg2
+    100008: B_L_leg_end
+    100010: B_L_toe1
+    100012: B_L_toe1_end
+    100014: B_L_toe2
+    100016: B_L_toe2_end
+    100018: B_main
+    100020: B_main_end
+    100022: B_R_foot
+    100024: B_R_foot_end
+    100026: B_R_leg1
+    100028: B_R_leg2
+    100030: B_R_leg_end
+    100032: B_R_toe1
+    100034: B_R_toe1_end
+    100036: B_R_toe2
+    100038: B_R_toe2_end
+    100040: bot
+    100042: Circle001
+    100044: Circle002
+    100046: //RootNode
+    400000: B_L_foot
+    400002: B_L_foot_end
+    400004: B_L_leg1
+    400006: B_L_leg2
+    400008: B_L_leg_end
+    400010: B_L_toe1
+    400012: B_L_toe1_end
+    400014: B_L_toe2
+    400016: B_L_toe2_end
+    400018: B_main
+    400020: B_main_end
+    400022: B_R_foot
+    400024: B_R_foot_end
+    400026: B_R_leg1
+    400028: B_R_leg2
+    400030: B_R_leg_end
+    400032: B_R_toe1
+    400034: B_R_toe1_end
+    400036: B_R_toe2
+    400038: B_R_toe2_end
+    400040: bot
+    400042: Circle001
+    400044: Circle002
+    400046: //RootNode
+    2100000: 'Material #64'
+    4300000: bot
+    7400000: Walk
+    9500000: //RootNode
+    13700000: bot
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Walk
+      takeName: Take 001
+      firstFrame: 4
+      lastFrame: 21
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -29,6 +29,13 @@ public class DashController : MonoBehaviour {
 
     public Animator anim;
 
+    public GameObject trail;
+    GameObject trailInstance;
+
+	[Header ("--- SOUND EFFECTS ---")]
+	public AudioSource dash;
+	public AudioSource dashRegain;
+
 	void Start () 
 	{
 	//	rb = GetComponent<Rigidbody> ();
@@ -54,6 +61,7 @@ public class DashController : MonoBehaviour {
 			{
 				if (!hpUse.isInRange) 
 				{
+					SoundFunctions.PlaySound (dash, true, 1.0f, 1.05f, false);
 					StartCoroutine (Dash ());
 				}
 			}
@@ -105,12 +113,18 @@ public class DashController : MonoBehaviour {
 		}
 
 		player.speed = dashStrength;
+        Vector3 lastPos = transform.position;
+
 		Physics.IgnoreLayerCollision (LayerMask.NameToLayer ("Enemy"), LayerMask.NameToLayer ("PlayerTwo"));
 		Physics.IgnoreLayerCollision (LayerMask.NameToLayer ("DashEnemy"), LayerMask.NameToLayer ("PlayerTwo"), false);
 
-		yield return new WaitForSeconds(dashTime);
+        if (trailInstance == null)
+            trailInstance = Instantiate(trail, transform) as GameObject;
+
+        yield return new WaitForSeconds(dashTime);
 	
 		player.speed = 0;
+  //      print((lastPos - transform.position).magnitude);
 
 		yield return new WaitForSeconds (dashFreeze);
 
@@ -132,6 +146,7 @@ public class DashController : MonoBehaviour {
 		fills [dashCount].color = emptyColor;
 
 		yield return new WaitForSeconds (dashRegen);
+		SoundFunctions.PlaySound (dashRegain, false, 1.0f, 1.0f, false);
 		batteries [dashCount].color = fullColor;
 		fills [dashCount].color = fullColor;
 		dashCount += 1;
