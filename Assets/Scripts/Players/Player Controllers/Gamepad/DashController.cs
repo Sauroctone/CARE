@@ -32,11 +32,15 @@ public class DashController : MonoBehaviour {
     public GameObject trail;
     GameObject trailInstance;
 
+<<<<<<< HEAD
 	[Header ("--- SOUND EFFECTS ---")]
 	public AudioSource dash;
 	public AudioSource dashRegain;
 
 	void Start () 
+=======
+    void Start () 
+>>>>>>> 6d28e219a29de601b32a7258e555fb1a6ac5bec2
 	{
 	//	rb = GetComponent<Rigidbody> ();
 		player = GetComponent<GamepadController> ();

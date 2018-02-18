@@ -288,7 +288,11 @@ MonoBehaviour:
   grain:
     m_Enabled: 1
     m_Settings:
+<<<<<<< HEAD
       colored: 0
+=======
+      colored: 1
+>>>>>>> 6d28e219a29de601b32a7258e555fb1a6ac5bec2
       intensity: 0.35
       size: 1
       luminanceContribution: 0.722
