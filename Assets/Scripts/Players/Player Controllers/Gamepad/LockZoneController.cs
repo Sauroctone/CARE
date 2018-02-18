@@ -44,19 +44,13 @@ public class LockZoneController : MonoBehaviour {
     public GameObject trail;
     GameObject trailInstance;
 
-<<<<<<< HEAD
 	//	Mesh lockZoneMesh;
 
 	[Header ("--- SOUND EFFECTS ---")]
 	public AudioSource lockzoneLoad;
 	public AudioSource lockzoneHit;
-=======
->>>>>>> 6d28e219a29de601b32a7258e555fb1a6ac5bec2
 
-
-    //	Mesh lockZoneMesh;
-
-    void Start()
+	void Start()
 	{
 		player = GetComponent <GamepadController> ();
 		//dash = GetComponent <DashController> ();

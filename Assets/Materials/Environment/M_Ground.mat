@@ -19,11 +19,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-<<<<<<< HEAD:Assets/Materials/Environment/M_Ground.mat
         m_Texture: {fileID: 2800000, guid: 9a0a745a1b6bb2a428c5d37f43bdffa2, type: 3}
-=======
-        m_Texture: {fileID: 2800000, guid: 144bd0e48bfe6334e90c9bcd9e447465, type: 3}
->>>>>>> 6d28e219a29de601b32a7258e555fb1a6ac5bec2:Assets/Materials/Environment/M_Ground.mat
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -59,11 +55,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-<<<<<<< HEAD:Assets/Materials/Environment/M_Ground.mat
     - _BumpScale: 0.2
-=======
-    - _BumpScale: 0.5
->>>>>>> 6d28e219a29de601b32a7258e555fb1a6ac5bec2:Assets/Materials/Environment/M_Ground.mat
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
