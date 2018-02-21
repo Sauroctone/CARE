@@ -1,0 +1,256 @@
+fileFormatVersion: 2
+guid: 8fcbc3f326ece3c4bb9c98eb9fc6489d
+timeCreated: 1519209191
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Body_endM
+    100002: BodyM
+    100004: C_main
+    100006: //RootNode
+    100008: L_arm1M
+    100010: L_arm2M
+    100012: L_arm_endM
+    100014: L_finger1_1M
+    100016: L_finger1_2M
+    100018: L_finger1_endM
+    100020: L_finger2_1M
+    100022: L_finger2_2M
+    100024: L_finger2_endM
+    100026: L_finger3_1M
+    100028: L_finger3_2M
+    100030: L_finger3_endM
+    100032: L_foot_endM
+    100034: L_footM
+    100036: L_handM
+    100038: L_leg1M
+    100040: L_leg2M
+    100042: L_leg_endM
+    100044: L_mech1M
+    100046: L_mech2M
+    100048: L_mech_endM
+    100050: L_mech_finger1_endM
+    100052: L_mech_finger1M
+    100054: L_mech_finger2_endM
+    100056: L_mech_finger2M
+    100058: L_mech_finger3_endM
+    100060: L_mech_finger3M
+    100062: L_mech_handM
+    100064: L_thumb_1M
+    100066: L_thumb_2M
+    100068: L_thumb_endM
+    100070: Object017
+    100072: Particle View 001
+    100074: R_arm1M
+    100076: R_arm2M
+    100078: R_arm_endM
+    100080: R_finger1_1M
+    100082: R_finger1_2M
+    100084: R_finger1_endM
+    100086: R_finger2_1M
+    100088: R_finger2_2M
+    100090: R_finger2_endM
+    100092: R_finger3_1M
+    100094: R_finger3_2M
+    100096: R_finger3_endM
+    100098: R_foot_endM
+    100100: R_footM
+    100102: R_handM
+    100104: R_leg1M
+    100106: R_leg2M
+    100108: R_leg_endM
+    100110: R_mech1M
+    100112: R_mech2M
+    100114: R_mech_endM
+    100116: R_mech_finger1M
+    100118: R_mech_finger2M
+    100120: R_mech_finger3_endM
+    100122: R_mech_finger3M
+    100124: R_mech_finger_endM
+    100126: R_mech_finger_endM 1
+    100128: R_mech_handM
+    100130: R_thumb1M
+    100132: R_thumb2M
+    100134: R_thumb_endM
+    400000: Body_endM
+    400002: BodyM
+    400004: C_main
+    400006: //RootNode
+    400008: L_arm1M
+    400010: L_arm2M
+    400012: L_arm_endM
+    400014: L_finger1_1M
+    400016: L_finger1_2M
+    400018: L_finger1_endM
+    400020: L_finger2_1M
+    400022: L_finger2_2M
+    400024: L_finger2_endM
+    400026: L_finger3_1M
+    400028: L_finger3_2M
+    400030: L_finger3_endM
+    400032: L_foot_endM
+    400034: L_footM
+    400036: L_handM
+    400038: L_leg1M
+    400040: L_leg2M
+    400042: L_leg_endM
+    400044: L_mech1M
+    400046: L_mech2M
+    400048: L_mech_endM
+    400050: L_mech_finger1_endM
+    400052: L_mech_finger1M
+    400054: L_mech_finger2_endM
+    400056: L_mech_finger2M
+    400058: L_mech_finger3_endM
+    400060: L_mech_finger3M
+    400062: L_mech_handM
+    400064: L_thumb_1M
+    400066: L_thumb_2M
+    400068: L_thumb_endM
+    400070: Object017
+    400072: Particle View 001
+    400074: R_arm1M
+    400076: R_arm2M
+    400078: R_arm_endM
+    400080: R_finger1_1M
+    400082: R_finger1_2M
+    400084: R_finger1_endM
+    400086: R_finger2_1M
+    400088: R_finger2_2M
+    400090: R_finger2_endM
+    400092: R_finger3_1M
+    400094: R_finger3_2M
+    400096: R_finger3_endM
+    400098: R_foot_endM
+    400100: R_footM
+    400102: R_handM
+    400104: R_leg1M
+    400106: R_leg2M
+    400108: R_leg_endM
+    400110: R_mech1M
+    400112: R_mech2M
+    400114: R_mech_endM
+    400116: R_mech_finger1M
+    400118: R_mech_finger2M
+    400120: R_mech_finger3_endM
+    400122: R_mech_finger3M
+    400124: R_mech_finger_endM
+    400126: R_mech_finger_endM 1
+    400128: R_mech_handM
+    400130: R_thumb1M
+    400132: R_thumb2M
+    400134: R_thumb_endM
+    2100000: 'Material #62'
+    4300000: Object017
+    7400000: Hug
+    9500000: //RootNode
+    13700000: Object017
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Hug
+      takeName: Take 001
+      firstFrame: 183
+      lastFrame: 201
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
