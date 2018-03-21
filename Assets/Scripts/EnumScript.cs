@@ -10,3 +10,10 @@ public enum PlayerTwoStates
 	Locking,
 	GivingHealth
 }
+
+public enum EnemyState
+{
+    NotGrouped,
+    GroupedSmall,
+    GroupedLarge
+}

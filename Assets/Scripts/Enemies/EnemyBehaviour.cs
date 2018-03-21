@@ -5,95 +5,112 @@ using UnityEngine.AI;
 
 public class EnemyBehaviour : MonoBehaviour {
 
-	public MouseController mouse;
+    public int smallGroup;
+    public int largeGroup;
+    public int enemiesAround;
+    bool isPulled;
+    public EnemyState currentState;
+
+    [Header("References")]
+    public MouseController mouse;
 	public Rigidbody rb;
 	public GameObject dust;
 	public EnemyHealthManager health;
 	public ScreenShakeGenerator shake;
-
-	private bool isPulled;
-
-	public int smallGroup;
-	public int largeGroup;
-
 	public Transform player1;
 	public Transform player2;
 	public Transform initPos;
 	public NavMeshAgent navMeshAgent;
-
-	public int enemiesAround;
-	public enum enemyState {notGrouped, groupedSmall, groupedLarge};
-	public enemyState currentState;
-
 	public EnemyListManager listManager;
 
-	// MANAGE ENEMIES IN A LIST (enemyManager on camera?) TO AVOID GAMEOBJECT.FIND
-
-	void Start () {
-		listManager.enemyList.Add (gameObject);
+	void Start ()
+    {
+		listManager.enemyList.Add (this);
 	}
 
-	void Update () {
+	void Update ()
+    {
 		SetEnemyState ();
 	}
 
-	void SetEnemyState () {
-
+	void SetEnemyState ()
+    {
 		// Check how many enemies are around this enemy, and set its currentState
-		if (enemiesAround < smallGroup) {
-			currentState = enemyState.notGrouped;
+		if (enemiesAround < smallGroup)
+        {
+			currentState = EnemyState.NotGrouped;
 			GameObject tempTarget = ChooseTarget ();
-			if (tempTarget == null) {
+
+            if (tempTarget == null)
+            {
 				tempTarget = player2.gameObject;
 			}
+
 			navMeshAgent.destination = tempTarget.transform.position;
-		} else if ((enemiesAround >= smallGroup) && (enemiesAround < largeGroup)) {
-			currentState = enemyState.groupedSmall;
+		}
+
+        else if ((enemiesAround >= smallGroup) && (enemiesAround < largeGroup))
+        {
+			currentState = EnemyState.GroupedSmall;
 			navMeshAgent.destination = player2.position;
-		} else if (enemiesAround >= largeGroup) {
-			currentState = enemyState.groupedLarge;
+		}
+
+        else if (enemiesAround >= largeGroup)
+        {
+			currentState = EnemyState.GroupedLarge;
 			navMeshAgent.destination = player1.position;
 		}
 
 	}
 
-	GameObject ChooseTarget () {
-
+	GameObject ChooseTarget ()
+    {
 		// Create an array of all existing enemies
-		GameObject[] enemies;
-		enemies = GameObject.FindGameObjectsWithTag ("Enemy");
+		//GameObject[] enemies;
+		//enemies = GameObject.FindGameObjectsWithTag ("Enemy");
+
 		GameObject target = null;
-		GameObject closest = null;
-		GameObject closestGrouped = null;
+		EnemyBehaviour closest = null;
+		EnemyBehaviour closestGrouped = null;
 		float distance = Mathf.Infinity;
 
 		// Seek and return the closest enemy in the array
-		foreach (GameObject enemy in enemies) {
-
+		foreach (EnemyBehaviour enemy in listManager.enemyList)
+        {
 			// Exclude this Gameobject from the array (so that it won't target itself)
-			if (enemy.Equals(this.gameObject)) {
+			if (enemy.Equals(this))
+            {
 				continue;
 			}
 
 			// Compare the distance between this enemy and its target
 			Vector3 diff = enemy.transform.position - transform.position;
 			float currentDistance = diff.sqrMagnitude;
-			if (currentDistance < distance) {
+			if (currentDistance < distance)
+            {
 				closest = enemy;
 				distance = currentDistance;
 			}
 
 			// 
-			if (enemy.GetComponent<EnemyBehaviour> ().currentState == enemyState.groupedSmall) {
+			if (enemy.currentState == EnemyState.GroupedSmall)
+            {
 				closestGrouped = enemy;
-			} else {
+			}
+
+            else
+            {
 				closest = enemy;
 			}
 
-			if (closestGrouped != null) {
-				target = closestGrouped;
-			} else if (closest != null) {
-				target = closest;
+			if (closestGrouped != null)
+            {
+				target = closestGrouped.gameObject;
+			}
+
+            else if (closest != null)
+            {
+				target = closest.gameObject;
 			}
 
 		}
@@ -101,9 +118,20 @@ public class EnemyBehaviour : MonoBehaviour {
 		return target;
 	}
 
-	public IEnumerator GetPulled ()
+    public void GetPulled()
+    {
+        StartCoroutine(PullCor());
+    }
+
+    public void GetStunned(float _stunTime)
+    {
+        StartCoroutine(StunCor(_stunTime));
+    }
+
+    IEnumerator PullCor ()
     {
 		isPulled = true;
+        navMeshAgent.isStopped = true;
 		yield return new WaitForSeconds (0.2f);
 
 		GameObject dustInst = Instantiate (dust, transform.position, Quaternion.identity) as GameObject;
@@ -117,7 +145,15 @@ public class EnemyBehaviour : MonoBehaviour {
 
 		rb.useGravity = true;
 		isPulled = false;
+        navMeshAgent.isStopped = false;
 	}
+
+    IEnumerator StunCor (float _stunTime)
+    {
+        navMeshAgent.isStopped = true;
+        yield return new WaitForSeconds(_stunTime);
+        navMeshAgent.isStopped = false;
+    }
 
 	void OnTriggerEnter (Collider col)
     {

@@ -76,6 +76,8 @@ public class LockZoneController : MonoBehaviour {
 
 	void PlayerInput()
 	{
+
+        //Pressing the lockzone button 
 		if (stateMan.playerTwoState == PlayerTwoStates.Normal && player.gamepad.GetButtonDown("X")) 
 		{
 			lockZone.SetActive (true);
@@ -89,6 +91,7 @@ public class LockZoneController : MonoBehaviour {
 			rightPower = 0.2f;
 		}
 
+        //While it's pressed
 		if (lockZone.activeSelf && player.gamepad.GetButton ("X"))
 		{
 			scale += scaleIncrement * Time.deltaTime;
@@ -104,6 +107,7 @@ public class LockZoneController : MonoBehaviour {
 			vibration.Vibrate (leftPower, rightPower);
 		}
 
+        //When it's released
 		if (lockZone.activeSelf && !player.gamepad.GetButton ("X")) 
 		{
 			CleanZone ();
@@ -174,8 +178,8 @@ public class LockZoneController : MonoBehaviour {
 	{
 		foreach (Transform enemy in lockList.lockedEnemies) 
 		{
-			enemy.GetComponent<Renderer> ().material = lockList.black;
-		}
+            enemy.Find("LockFeedback").gameObject.SetActive(false);
+        }
 
 		lockList.lockedEnemies.Clear ();
 	}
@@ -205,8 +209,8 @@ public class LockZoneController : MonoBehaviour {
 			lockList.lockedEnemies.RemoveAt (0);
 			shake.ShakeScreen (.2f, .15f);
 
-			if (lockList.lockedEnemies.Count > 0)
-				lockList.lockedEnemies [0].GetComponent<Renderer> ().material = lockList.darkRed;
+			//if (lockList.lockedEnemies.Count > 0)
+			//	lockList.lockedEnemies [0].GetComponent<Renderer> ().material = lockList.darkRed;
 			
 			yield return new WaitForSeconds (execInterval);
 		}

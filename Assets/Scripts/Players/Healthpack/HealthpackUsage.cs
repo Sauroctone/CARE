@@ -105,5 +105,6 @@ public class HealthpackUsage : MonoBehaviour {
 		inputLoad = 0;
 		loader.fillAmount = 0;
 		stateMan.playerTwoState = PlayerTwoStates.Normal;
+        isInRange = false;
 	}
 }

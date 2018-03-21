@@ -7,36 +7,45 @@ public class MouseController: MonoBehaviour {
 
     public Vector3 lookDir;
 
-	public GameObject healZone;
-	public GameObject ccZone;
-	GameObject ccZoneInst;
-	GameObject arrowInst;
-	public GameObject shield;
-	public Transform player2;
-	public Transform player1;
+    [Header("Heal")]
+    public float healPerFrame;
+    public float healZoneWidth;
 
-	Ray ray;
-	int layerMask;
-
-	bool isBuffering;
-	bool leftClicked;
+    [Header("Shield")]
 	public float bufferTimer;
 	public float shieldTimer;
 	public float shieldWidth;
-	public float ccZoneWidth;
-	public float healZoneWidth;
+    bool isBuffering;
+    bool leftClicked;
 
-	Vector3 clickPosition;
+    [Header("Stun")]
+    public float ccZoneWidth;
+    public float stunTime;
+
+    [Header("Pull")]
 	public float pullStrength;
 	public float pullTime;	
 	public Vector3 pullDir;
 	public float pullHeight;
+    Vector3 clickPosition;
 
+
+    Ray ray;
+    int layerMask;
+
+
+    [Header("References")]
 	public ParticleSystem healParticles;
 	public HealthManager allyHealth;
-	public float healPerFrame;
+    public GameObject healZone;
+    public GameObject ccZone;
+    GameObject ccZoneInst;
+    GameObject arrowInst;
+    public GameObject shield;
+    public Transform player2;
+    public Transform player1;
 
-	void Start ()
+    void Start ()
 	{
 		layerMask = LayerMask.GetMask ("CCZone");
 	}
@@ -183,16 +192,18 @@ public class MouseController: MonoBehaviour {
 
 	void CrowdControl (Transform enemy)
 	{
-		if (arrowInst != null && arrowInst.activeSelf) 
-		{
-			pullDir = new Vector3 (transform.position.x - enemy.position.x, pullHeight, transform.position.z - enemy.position.z).normalized;
-			EnemyBehaviour behaviour = enemy.gameObject.GetComponent<EnemyBehaviour> ();
-			behaviour.mouse = GetComponent<MouseController> ();
-			StartCoroutine (behaviour.GetPulled ());
-		}
+        EnemyBehaviour behaviour = enemy.gameObject.GetComponent<EnemyBehaviour>();
 
-		else
-			print ("stun");
+        if (arrowInst != null && arrowInst.activeSelf)
+        {
+            pullDir = new Vector3(transform.position.x - enemy.position.x, pullHeight, transform.position.z - enemy.position.z).normalized;
+
+            behaviour.mouse = GetComponent<MouseController>();
+            behaviour.GetPulled();
+        }
+
+        else
+            behaviour.GetStunned(stunTime);
 
 		//else
 			//print ("stunned");

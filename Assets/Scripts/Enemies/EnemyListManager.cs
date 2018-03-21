@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class EnemyListManager : MonoBehaviour {
 
-	public List<GameObject> enemyList;
+	public List<EnemyBehaviour> enemyList;
 
 }

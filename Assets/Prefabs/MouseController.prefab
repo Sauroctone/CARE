@@ -270,23 +270,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookDir: {x: 0, y: 0, z: 0}
-  healZone: {fileID: 1261105254244856}
-  ccZone: {fileID: 1844301344701694, guid: a104f88a20d8faf429e3e266b8054dec, type: 2}
-  shield: {fileID: 0}
-  player2: {fileID: 0}
-  player1: {fileID: 0}
+  healPerFrame: 15
+  healZoneWidth: 2
   bufferTimer: 0.1
   shieldTimer: 1
   shieldWidth: 2.5
   ccZoneWidth: 3
-  healZoneWidth: 2
+  stunTime: 1.5
   pullStrength: 40
   pullTime: 0.1
   pullDir: {x: 0, y: 0, z: 0}
   pullHeight: 2
   healParticles: {fileID: 0}
   allyHealth: {fileID: 0}
-  healPerFrame: 15
+  healZone: {fileID: 1261105254244856}
+  ccZone: {fileID: 1844301344701694, guid: a104f88a20d8faf429e3e266b8054dec, type: 2}
+  shield: {fileID: 0}
+  player2: {fileID: 0}
+  player1: {fileID: 0}
 --- !u!119 &119638708188591198
 Projector:
   m_ObjectHideFlags: 1
